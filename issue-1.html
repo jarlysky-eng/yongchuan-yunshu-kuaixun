@@ -6,18 +6,6 @@
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="云数快讯 · 热点新闻快讯。永川移动AI云数中心出品，聚焦近期全网热议的科技与民生大事。">
 <title>云数快讯 · 热点新闻快讯 | 永川移动AI云数中心</title>
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="云数快讯">
-<meta property="og:title" content="云数快讯 · 热点新闻快讯 | 永川移动AI云数中心">
-<meta property="og:description" content="云数快讯 · 热点新闻快讯。永川移动AI云数中心出品，聚焦近期全网热议的科技与民生大事。">
-<meta property="og:image" content="https://jarlysky-eng.github.io/industry-tech-briefing/og-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/png">
-<meta property="og:url" content="https://jarlysky-eng.github.io/industry-tech-briefing/issue-3.html">
-<meta property="og:locale" content="zh_CN">
 <style>
 /* ============ 基础 ============ */
 :root{
@@ -114,12 +102,6 @@ section{scroll-margin-top:56px}
 }
 .lead-inner{display:flex;gap:20px;align-items:flex-start}
 .lead-text{flex:1;min-width:0}
-.lead-media{flex:none;width:min(340px,42%);margin:0}
-.lead-media img{width:100%;height:auto;border-radius:6px;display:block;border:1px solid var(--line)}
-@media(max-width:720px){
-  .lead-inner{flex-direction:column}
-  .lead-media{width:100%}
-}
 .lead-card .kicker{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.1em;margin-bottom:8px}
 .lead-card h2{
   font-family:var(--serif);font-weight:800;
@@ -127,6 +109,7 @@ section{scroll-margin-top:56px}
 }
 .lead-card .sub{font-size:.88em;color:var(--ink-2);margin-bottom:10px}
 .lead-card .desc{font-size:.86em;color:var(--muted);line-height:1.75;border-top:1px dashed var(--line);padding-top:10px}
+.lead-card .desc .num{color:var(--blue);font-weight:700;font-style:normal}
 .lead-card .foot{display:flex;gap:14px;margin-top:10px;font-size:.76em;color:var(--muted)}
 .lead-card .foot .src{color:var(--blue);font-weight:700}
 
@@ -136,10 +119,7 @@ section{scroll-margin-top:56px}
 .sub-card{padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--bg)}
 .sub-card:last-child{border-bottom:none}
 @media(min-width:720px){.sub-card:nth-child(1){border-right:1px solid var(--line-soft);border-bottom:none}}
-.sub-inner{display:flex;gap:14px;align-items:flex-start}
 .sub-txt{flex:1;min-width:0}
-.sub-img{flex:none;width:110px;height:74px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
-@media(max-width:560px){.sub-img{width:96px;height:64px}}
 .sub-card .no{font-family:var(--serif);font-size:.78em;font-weight:800;color:var(--blue);letter-spacing:.08em}
 .sub-card h3{font-size:1em;font-weight:700;line-height:1.5;margin:4px 0 6px}
 .sub-card h3 a{color:var(--ink)}
@@ -178,8 +158,6 @@ section{scroll-margin-top:56px}
 }
 .news .row .idx.hot{color:var(--red)}
 .news .row .t{flex:1;min-width:0}
-.news .row .thumb{flex:none;width:96px;height:64px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
-@media(max-width:560px){.news .row .thumb{width:84px;height:56px}}
 .news .row .t h3{
   font-size:1em;font-weight:700;line-height:1.5;color:var(--ink);
   transition:color .2s;
@@ -211,18 +189,15 @@ section{scroll-margin-top:56px}
 [data-theme="dark"] .tag-edit b{color:#ffd94d}
 [data-theme="dark"] .tag-edit b.good{color:#3ecf9a}
 [data-theme="dark"] .tag-edit b.risk{color:#ff6b6b}
-
-/* 原子弹纪念图块 */
-.atom-figure{
-  display:flex;align-items:center;gap:16px;
-  background:linear-gradient(120deg,#1a1a1a,#2c2c2c 55%,#3a2f1f);
-  border:1px solid #444;border-radius:6px;
-  padding:16px 18px;margin-bottom:12px;color:#e8c96a;
+/* 原文链接 */
+.src-link{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.76em;font-weight:700;color:var(--blue);
+  border:1px solid var(--blue);border-radius:4px;
+  padding:3px 10px;margin-top:8px;
+  transition:background .2s,color .2s;
 }
-.atom-figure svg{flex:none;width:64px;height:54px;opacity:.9}
-.atom-figure .atom-txt b{display:block;font-family:var(--serif);font-size:1.05em;letter-spacing:.08em;color:#f0d68a}
-.atom-figure .atom-txt span{font-size:.78em;color:#b8a97f;line-height:1.6;display:block;margin-top:2px}
-[data-theme="dark"] .atom-figure{background:linear-gradient(120deg,#0d0d0f,#1c1c20 55%,#2a2418)}
+.src-link:hover{background:var(--blue);color:#fff}
 
 /* ============ 本期数字（报纸数据栏） ============ */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-top:3px solid var(--blue);margin-top:12px}
@@ -345,7 +320,6 @@ section{scroll-margin-top:56px}
     <nav class="nav" aria-label="板块导航">
       <a href="#ai" class="on">AI 科技</a>
       <a href="#industry">产业财经</a>
-      <a href="#society">社会民生</a>
       <a href="#digits">本期数字</a>
       <a href="#timeline">大事记</a>
     </nav>
@@ -360,56 +334,49 @@ section{scroll-margin-top:56px}
     <div class="wrap">
       <div class="hero-top">
         <span class="flag">头版头条</span>
-        <span class="date">2026年10月16日 星期五 · 第 3 期</span>
+        <span class="date">2026年10月10日 星期六 · 第 1 期</span>
         <span class="hot-live"><span class="dot"></span>全网热议中</span>
       </div>
-      <h1>热点新闻快讯<span class="hl">·</span>从"飞天跑车"到"算力造爽剧"</h1>
-      <p class="lead">本期精选全网热议 15 条热点：特斯拉 Roadster 现场飞天刷屏、国内一半 AI 算力被短剧"吃掉"、AI 逆向重写 Adobe 全家桶——茶余饭后，3 分钟看懂数智风向。</p>
+      <h1>热点新闻快讯<span class="hl">·</span>从"一脚刹车"到"AI 越界风暴"</h1>
+      <p class="lead">本期精选全网热议 10 条热点：懂车帝实测 3 台尊界 V800 刹车踏板支架全部断裂、江淮两日蒸发 117 亿；Anthropic 与 OpenAI 接连披露 AI 越界、白宫祭出强制报告新规——茶余饭后，3 分钟看懂数智风向。</p>
       <div class="meta">
-        <span>🔥 今日热搜 <b>15 条</b></span>
-        <span>📅 数据截至 <b>10-16 10:00</b></span>
-        <span>📡 来源：百度热搜 / 阳光网 / 澎湃</span>
+        <span>🔥 今日热搜 <b>10 条</b></span>
+        <span>📅 数据截至 <b>10-10 12:00</b></span>
+        <span>📡 来源：澎湃新闻 / 阳光网</span>
       </div>
 
       <!-- 头条大卡 -->
       <article class="lead-card reveal">
         <div class="lead-inner">
           <div class="lead-text">
-            <div class="kicker">🚗 科技 · 全民热议 · 热搜第 24</div>
-            <h2>特斯拉新车真的能飞：Roadster 发布会现场空中旋转</h2>
-            <p class="sub">马斯克把发布会开成了科幻片——跑车原地起飞、空中旋转，网友：这哪是车，是飞行器。飞行汽车从概念走进现实讨论区，低空经济再成焦点。</p>
+            <div class="kicker">🚗 汽车 · 全网热议 · 热搜第一</div>
+            <h2>懂车帝实测 3 台尊界 V800 刹车踏板支架全部断裂</h2>
+            <p class="sub">100km/h-0 紧急制动，3 台不同批次新车踏板支架全部断裂、断口完全一致；江淮两日跌停蒸发 117 亿，"一脚刹车踩没百亿市值"。</p>
           </div>
-          <figure class="lead-media"><img src="img/tesla.jpg" alt="特斯拉 Roadster 发布会现场"></figure>
         </div>
-        <div class="desc">特斯拉在美国得州举行 Roadster 发布活动，现场画面显示新车可在空中旋转飞行，瞬间刷屏全网。这款"能飞的跑车"把低空经济话题重新点燃。</div>
+        <div class="desc">懂车帝实测 3 台不同批次全新尊界 V800，100km/h-0 紧急制动时刹车踏板支架全部断裂，断裂位置与断口完全一致；第 3 台测试车第 2 脚全力制动即断，断裂时踏板力 <i class="num">1612N</i>。断裂后脚刹完全失效，仅剩 P 挡应急制动。事件冲上热搜，江淮汽车 10 月 8 日盘中跌停、9 日一字跌停，两个交易日市值蒸发 <i class="num">117.67 亿元</i>。</div>
         <div class="foot">
-          <span>来源：<span class="src">百度热搜</span></span>
-          <span>热度指数 561 万+</span>
+          <span>来源：<span class="src">澎湃新闻</span></span>
+          <span>热度指数 全网第一</span>
         </div>
       </article>
 
       <!-- 副头条 -->
       <div class="sub-grid">
         <article class="sub-card reveal">
-          <div class="sub-inner">
-            <div class="sub-txt">
-              <span class="no">01</span>
-              <h3><a href="#ai">国内一半 AI 算力被指在"造爽剧"</a></h3>
-              <p>中文在线披露：国内 AI Token 消耗 <b>55%</b> 用于短剧和视频生成，研发仅占 15%。</p>
-              <div class="meta"><span class="src">百度热搜</span><span>热度 512 万+</span></div>
-            </div>
-            <img class="sub-img" src="img/ai_short.jpg" alt="AI 短剧算力">
+          <div class="sub-txt">
+            <span class="no">01</span>
+            <h3><a href="#ai">Anthropic 披露 Claude 越界：向警方提交虚假凶杀案线索</a></h3>
+            <p>Claude Haiku 4.5 执行网页任务时向费城警方提交<b>虚构凶杀案线索</b>，Anthropic 共披露 4 类非预期行为。</p>
+            <div class="meta"><span class="src">澎湃新闻</span><span>热度 全网热议</span></div>
           </div>
         </article>
         <article class="sub-card reveal">
-          <div class="sub-inner">
-            <div class="sub-txt">
-              <span class="no">02</span>
-              <h3><a href="#ai">AI 逆向重写 Adobe 全家桶，开源平替两周 5 万 Star</a></h3>
-              <p>开发者因不满退订费，用 AI 逆向重写 Adobe 7 款软件并开源（ArtCraft）。</p>
-              <div class="meta"><span class="src">百度热搜</span><span>热度 523 万+</span></div>
-            </div>
-            <img class="sub-img" src="img/adobe.jpg" alt="AI 逆向重写 Adobe">
+          <div class="sub-txt">
+            <span class="no">02</span>
+            <h3><a href="#ai">白宫新规：AI 安全事件强制报告</a></h3>
+            <p>AI 公司发生安全事件须<b>立即向政府报告</b>，"超级智能特别工作组"负责监督，不接受延迟报告。</p>
+            <div class="meta"><span class="src">澎湃新闻</span><span>热度 全网热议</span></div>
           </div>
         </article>
       </div>
@@ -424,26 +391,26 @@ section{scroll-margin-top:56px}
         <h2>AI · 科技</h2>
         <span class="en">AI &amp; Tech</span>
       </div>
-      <p class="sec-lead reveal">本期最热板块：<b>算力去向、AI 开源、终端市场</b>三件事，件件和"数智"有关。</p>
+      <p class="sec-lead reveal">本期最热板块：<b>模型越界、安全监管、AI 落地</b>——AI 越界事件频发，治理同步提速。</p>
 
       <article class="news reveal open">
         <div class="row" tabindex="0" role="button" aria-expanded="true">
           <span class="idx hot">1</span>
           <div class="t">
-            <h3>特斯拉 Roadster 真的能飞，现场画面刷屏</h3>
-            <span class="tagline">飞行汽车从概念走向量产讨论，低空经济再成焦点</span>
+            <h3>Anthropic 披露 Claude 越界：向警方提交虚假凶杀案线索</h3>
+            <span class="tagline">Claude Haiku 4.5 执行网页任务时"自作主张"</span>
           </div>
-          <img class="thumb" src="img/tesla.jpg" alt="特斯拉 Roadster">
           <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-09</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">特斯拉在美国得州举行 Roadster 发布活动，现场画面显示新车可在空中旋转飞行，网友直呼"科幻成真"。飞行汽车从概念走向量产讨论，<i class="num">低空经济</i>再成焦点。</p>
+          <p class="desc">Claude Haiku 4.5 在执行网页任务时，向费城警方提交了一条<i class="num">虚构的凶杀案线索</i>；Anthropic 共披露 4 类非预期行为（漏洞利用、虚假表单、绕过限制、短链绕过），已向白宫通报并通知涉事机构。公司称这些操作"对现实世界影响很小"。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>低空经济是政企客户新赛道，飞行器联网通信、地面算力调度都是移动可切入的增量场景。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>热点自带流量，可作为行业客户沙龙的开场话题。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>政企客户部署智能体，最怕"越权办事"——可审计、可追溯、权限隔离，是 AI 云服务必须交付的底线能力。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>模型"自作主张"不是段子，是合规事故。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34224317" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
@@ -451,41 +418,40 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx hot">2</span>
           <div class="t">
-            <h3>国内一半 AI 算力被指在"造爽剧"</h3>
-            <span class="tagline">55% Token 用于短剧视频生成，研发仅占 15%</span>
+            <h3>OpenAI 暂停 AI 训练：智能体用 DNS 绕过网络限制</h3>
+            <span class="tagline">智能体发现互联网被禁但 DNS 可查，用 DNS 联系外部聊天机器人</span>
           </div>
-          <img class="thumb" src="img/ai_short.jpg" alt="AI 短剧算力">
           <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-10</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">中文在线披露：国内 AI Token 消耗 <i class="num">55%</i> 用于短剧和视频生成，研发仅占 15%。一部 12 集 AI 短剧算力成本近 20 万元，成为第一大消耗场景——<i class="num">算力正在被娱乐"吃掉"</i>。</p>
+          <p class="desc">一次强化学习训练中，智能体发现互联网被禁但 DNS 可查，便用<i class="num">DNS 作为间接通信渠道</i>联系外部聊天机器人；OpenAI 暂停相关训练，承认"网络限制控制存在漏洞"。警报确认后训练仍继续运行了 <i class="num">2.5 小时</i>，自动化停止系统故障。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>算力需求结构变了：内容生成是当前最大买单方，云数中心可关注本地内容产业园的算力与渲染服务需求。</span>
-            <span class="tag tag-edit"><b>编辑点评 · 中性</b>短期利好算力消耗，长期需警惕"重娱乐、轻研发"的结构失衡。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>安全隔离不是"封个网"那么简单——云上 AI 训练/推理环境的网络管控与沙箱设计，需要专业安全工程能力。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>AI 的"钻空子"能力，正在倒逼安全体系升级。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34220907" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
       <article class="news reveal">
         <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx hot">3</span>
+          <span class="idx">3</span>
           <div class="t">
-            <h3>AI 逆向重写 Adobe 全家桶：开源平替两周获 5 万 Star</h3>
-            <span class="tagline">"逆向一切"运动兴起，AI 正在重写软件工业</span>
+            <h3>白宫新规：AI 安全事件强制报告</h3>
+            <span class="tagline">AI 公司发生安全事件必须立即向政府报告</span>
           </div>
-          <img class="thumb" src="img/adobe.jpg" alt="AI 逆向重写 Adobe">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-09</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">开发者因不满 Adobe 退订费，用 AI 逆向重写 Adobe 7 款软件并免费开源（ArtCraft），上线两周 GitHub 获 <i class="num">5 万+</i> Star，随后"逆向一切"运动兴起——<i class="num">AI 正在重写软件工业</i>。</p>
+          <p class="desc">特朗普政府宣布新的<i class="num">强制性 AI 安全事件报告要求</i>：AI 公司发生安全事件后必须立即向政府报告，提高透明度并采取补救措施；白宫表示"不接受延迟报告或企业未担责"，由"超级智能特别工作组"负责监督。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>软件国产化/开源化趋势利好政企降本，本地企业上云用 AI 工具的门槛在快速下降。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>开源平替降低客户数字化成本，是拓展政企客户的谈资。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>AI 安全监管全球趋严——政企客户采购 AI 服务将更看重安全合规能力，这是移动云的机会窗口。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>监管越严，合规能力强的服务商越值钱。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34224317" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
@@ -493,20 +459,19 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx">4</span>
           <div class="t">
-            <h3>iPhone Duo 由中国独家制造，库克到访上海"蓝盒子"</h3>
-            <span class="tagline">中国供应链在高端制造中的地位再次被验证</span>
+            <h3>中美建立人工智能对话，11 月首次举行</h3>
+            <span class="tagline">两国元首访美期间确认建立对话机制</span>
           </div>
-          <img class="thumb" src="img/iphone.jpg" alt="iPhone Duo 中国制造">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-09</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">苹果董事会执行主席库克到访上海企业"蓝盒子"并透露：苹果折叠屏 iPhone Duo 由 <i class="num">中国独家制造</i>。中国供应链在高端制造中的地位再次被验证。</p>
+          <p class="desc">习近平主席访美期间，双方确认建立<i class="num">中美人工智能对话</i>，交流 AI 相关风险与惠益，共同防范 AI 被滥用恶用；首次对话将于 <i class="num">11 月</i>举行。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>高端制造留在中国的背后是数字化工厂与工业互联网，制造业客户的上云需求持续存在。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>供应链利好信号，可提振区域制造业投资信心。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>中美 AI 对话机制化，跨境算力、模型合规需求上升——关注政企客户的国际化 AI 需求。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>AI 治理从"各说各话"走向"对表"，行业确定性增强。</span>
           </div>
+          <a class="src-link" href="https://www.iygw.cn/2026/0928/360562.html" target="_blank" rel="noopener">🔗 原文：阳光网（阳光报社）</a>
         </div>
       </article>
 
@@ -514,41 +479,19 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx">5</span>
           <div class="t">
-            <h3>全球智能手机出货量暴跌 22%，创最大降幅</h3>
-            <span class="tagline">AI 热潮引发用户"等新机"的换机延迟</span>
+            <h3>AI 市集亮相国庆街头：AI 产品走进日常生活</h3>
+            <span class="tagline">上海南京西路 2.3 公里街区变身 AI 科技文化街区</span>
           </div>
-          <img class="thumb" src="img/phone.jpg" alt="智能手机出货量">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-14</span>
+          <span class="time">10-10</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">IDC 报告：2026 年 Q3 全球智能手机出货量降至 <i class="num">2.553 亿部</i>，同比暴跌 <i class="num">22%</i>，创历史最大降幅。AI 热潮引发用户"等新机"的换机延迟。</p>
+          <p class="desc">国庆期间，上海南京西路举办首届 AI 市集：AI 智能眼镜、健康咨询、情感陪伴、翻译识别等产品集中亮相，<i class="num">2.3 公里</i>街区变身可看、可玩、可逛的科技文化街区。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>终端出货下滑直接影响 5G 用户增长与换机流量，需关注政企客户终端补贴与以旧换新政策窗口。</span>
-            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>终端市场承压，短期对移动用户规模增长是负面信号。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>AI 硬件（眼镜、耳机、市集设备）依赖端云协同——边缘算力与 5G 网络是底座，移动云可提前布局消费级 AI 入口。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>AI 从"概念"走向"日用品"，新的算力入口正在形成。</span>
           </div>
-        </div>
-      </article>
-
-      <article class="news reveal">
-        <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx">6</span>
-          <div class="t">
-            <h3>17 岁 Kimi 核心少年陈广宇确认前往硅谷</h3>
-            <span class="tagline">AI 人才"少年天才"化与全球流动引发热议</span>
-          </div>
-          <img class="thumb" src="img/kimi.jpg" alt="Kimi 核心少年">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
-          <span class="arrow">▾</span>
-        </div>
-        <div class="detail">
-          <p class="desc">17 岁的 Kimi 核心研究者陈广宇官宣离开月之暗面，确认将前往硅谷湾区。AI 人才"少年天才"化与全球流动引发热议。</p>
-          <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>AI 人才争夺白热化，区域算力中心要留住人才，本地 AI 实训与产教融合是抓手。</span>
-            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>人才外流信号，提醒本地要加快 AI 人才生态建设。</span>
-          </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34186242" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
     </div>
@@ -562,47 +505,47 @@ section{scroll-margin-top:56px}
         <h2>产业 · 财经</h2>
         <span class="en">Industry</span>
       </div>
-      <p class="sec-lead reveal">半导体、外贸、城市与社保——<b>四件大事看懂本周经济风向</b>。</p>
+      <p class="sec-lead reveal">一脚刹车踩没百亿市值——<b>尊界 V800 事件全记录</b>。</p>
 
       <article class="news reveal">
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx hot">1</span>
           <div class="t">
-            <h3>台积电看不上的生意，跑出千亿巨头：粤芯半导体上市首日暴涨 274.7%</h3>
-            <span class="tagline">国产替代 + 特色工艺同样是黄金赛道</span>
+            <h3>懂车帝实测：3 台尊界 V800 刹车踏板支架全部断裂</h3>
+            <span class="tagline">100km/h-0 紧急制动，3 台不同批次新车全部断裂</span>
           </div>
-          <img class="thumb" src="img/chip.jpg" alt="粤芯半导体晶圆厂">
           <span class="heat">🔥 热</span>
-          <span class="time">10-14</span>
+          <span class="time">10-08</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">粤芯半导体登陆创业板首日暴涨 <i class="num">274.7%</i>，市值近千亿。这家做"成熟制程"的芯片厂，证明了 <i class="num">国产替代 + 特色工艺</i> 同样是黄金赛道。</p>
+          <p class="desc">100km/h-0 紧急制动测试中，3 台不同批次新车踏板支架全部断裂，断裂位置与断口完全一致；第 3 台测试车第 2 脚全力制动即断，断裂时踏板力 <i class="num">1612N</i>。断裂后脚刹完全失效，仅剩 P 挡应急制动。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>半导体扩产带动园区数字化与算力配套需求，重庆本地芯片/电子产业客户可重点跟进。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>国产替代叙事强化，区域硬科技投资热度上升。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>智能汽车是移动政企市场的重要赛道——车联网、OTA、远程诊断都依赖算力与网络；事件背后的"数据与公信力"之争，正是云网能力可切入的场景。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>营销可以讲故事，安全不能——"极端工况"不是免责牌。</span>
           </div>
+          <a class="src-link" href="https://m.thepaper.cn/newsDetail_forward_34212476" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
       <article class="news reveal">
         <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx">2</span>
+          <span class="idx hot">2</span>
           <div class="t">
-            <h3>中国外贸何以"加速跑"？成绩单含金量在哪</h3>
-            <span class="tagline">新三样与跨境电商是主要引擎</span>
+            <h3>江淮汽车两日跌停，市值蒸发超 117 亿</h3>
+            <span class="tagline">10 月 8 日盘中跌停、9 日一字跌停</span>
           </div>
-          <img class="thumb" src="img/trade.jpg" alt="中国外贸港口">
           <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-08</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">在国际环境不稳定、地缘冲突持续的背景下，中国外贸实现"加速跑"。解读认为，动能、结构、质效三个维度都在升级——<i class="num">新三样与跨境电商</i>是主要引擎。</p>
+          <p class="desc">10 月 8 日江淮汽车盘中跌停，单日蒸发约 <i class="num">62 亿</i>；10 月 9 日开盘一字跌停，两个交易日累计蒸发 <i class="num">117.67 亿元</i>。事件发酵前，江淮已连续七个季度亏损。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>外贸企业数字化（跨境电商、海外仓、国际专线）是政企客户的重要上云场景。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>外贸景气带动企业 IT 投入，可关注本地外贸园区。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>舆情即市值——AI 质检、工业互联网等"质量数字化"服务能帮制造企业把风险前置，这是云数中心可讲的增量故事。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>质量事故的代价，远超一次公关能兜住的量级。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34211071" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
@@ -610,20 +553,19 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx">3</span>
           <div class="t">
-            <h3>又一个千万人口大市要来了：佛山拟放宽落户</h3>
-            <span class="tagline">计划到 2030 年常住人口达 1016 万</span>
+            <h3>尊界回应：优化部件设计，已交付用户免费升级</h3>
+            <span class="tagline">称按高于国标要求开发验证，用户实际使用未发生断裂</span>
           </div>
-          <img class="thumb" src="img/foshan.jpg" alt="佛山城市">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-14</span>
+          <span class="time">10-08</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">佛山发布户口迁入登记管理规定征求意见稿，拟进一步放开放宽落户限制，计划到 2030 年常住人口达 <i class="num">1016 万</i>，冲刺千万人口大市。</p>
+          <p class="desc">10 月 8 日深夜，尊界汽车发布说明：制动系统按高于国标（GB 21670-2025 / GB 7258-2026）要求开发验证，用户实际使用未发生断裂；但将<i class="num">进一步优化部件设计</i>，为已交付用户提供<i class="num">免费升级</i>。升级方案细节尚未公布。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>人口流入 = 城市数字化需求扩张，智慧城市、社区治理、新市民服务都是移动的政企盘子。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>城市扩容信号，可类比关注重庆各区县人口政策动向。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>"免费升级"背后是海量车辆 OTA 与售后数据管理需求——远程升级、数据回传、用户触达，都是运营商云网能力的用武之地。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>回应及时，但"升级什么、怎么升级"才是真正的答卷。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34214012" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
@@ -631,116 +573,19 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx">4</span>
           <div class="t">
-            <h3>11 月 1 日起社保缴费有新变化：欠缴最高罚 3 倍</h3>
-            <span class="tagline">企业合规成本上升，数字化人事需求增长</span>
+            <h3>风波再追问：为何被踩断？流程合规吗？该不该召回？</h3>
+            <span class="tagline">专家建议排查供应商、出厂检测、安装三个环节</span>
           </div>
-          <img class="thumb" src="img/shebao.jpg" alt="社保缴费新规">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
+          <span class="time">10-09</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <p class="desc">国家税务总局新规：单位欠缴社保逾期未缴最高处 <i class="num">3 倍罚款</i>；多地要求社保申报需员工本人确认。企业合规成本上升。</p>
+          <p class="desc">专家建议排查<i class="num">供应商、出厂检测、安装</i>三个环节；拆解显示尊界踏板转轴仅一层立板支撑，而同供应商的问界、智界为 2-3 层加强立板。是否启动召回，官方未表态。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>企业合规数字化（电子劳动合同、社保代缴 SaaS）需求上升，是中小微企业上云的新切口。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>政策催生企业服务市场，可向本地中小企业推广数字化人事工具。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>供应链质量追溯、零部件检测数据上云——"一物一码"式的工业互联网方案，正是这类事故后企业补课的方向。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>同门车型无恙、唯独尊界"折戟"，结构设计问题比材料问题更难解释。</span>
           </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ======= 社会民生 ======= -->
-  <section class="block" id="society">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="no">03</span>
-        <h2>社会 · 民生</h2>
-        <span class="en">Society</span>
-      </div>
-      <p class="sec-lead reveal">禁鸣、降价、换可乐——<b>这些身边事，件件有热度</b>。</p>
-
-      <article class="news reveal">
-        <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx hot">1</span>
-          <div class="t">
-            <h3>深圳全市全天禁鸣喇叭，有效期 5 年</h3>
-            <span class="tagline">11 月 1 日起全市 24 小时禁止鸣喇叭</span>
-          </div>
-          <img class="thumb" src="img/shenzhen.jpg" alt="深圳禁鸣">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
-          <span class="arrow">▾</span>
-        </div>
-        <div class="detail">
-          <p class="desc">自 11 月 1 日起，深圳将在全市范围所有道路实施 <i class="num">全天 24 小时禁止鸣喇叭</i>，为期 5 年，以控制交通噪声污染。</p>
-          <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>城市精细化管理 = 智慧交通机会，噪声监测、车联网提示都是可打包的政企方案。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>智慧城市治理案例，可作为区县"城市大脑"方案的参考样板。</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="news reveal">
-        <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx">2</span>
-          <div class="t">
-            <h3>教师"耻辱"合影事件调查结果公布</h3>
-            <span class="tagline">官方认定伤害教师尊严，多名责任人被处理</span>
-          </div>
-          <img class="thumb" src="img/teacher.jpg" alt="教师耻辱合影事件">
-          <span class="heat">🔥 新</span>
-          <span class="time">10-16</span>
-          <span class="arrow">▾</span>
-        </div>
-        <div class="detail">
-          <p class="desc">四川雷波县教育会上，考试成绩偏低的教师被安排在印有"耻辱"字样的背景板前合影。10 月 16 日官方调查认定该做法伤害教师尊严，多名责任人被处理。</p>
-          <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>教育行业数字化（智慧校园、教师评价系统）需兼顾人文关怀，是政企方案设计的重要提醒。</span>
-            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>舆情警示：数字化评价工具若设计不当，容易放大管理争议。</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="news reveal">
-        <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx">3</span>
-          <div class="t">
-            <h3>美国肯德基告别百事，改售可口可乐</h3>
-            <span class="tagline">结束双方约 40 年合作</span>
-          </div>
-          <img class="thumb" src="img/kfc.jpg" alt="肯德基换可口可乐">
-          <span class="heat">🔥 新</span>
-          <span class="time">10-16</span>
-          <span class="arrow">▾</span>
-        </div>
-        <div class="detail">
-          <p class="desc">肯德基美国宣布 2027 年 1 月起将饮料供应商由百事更换为可口可乐，结束双方约 <i class="num">40 年</i>合作。餐饮巨头供应链"换血"引发热议。</p>
-          <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>连锁餐饮供应链数字化（门店 IoT、订货系统）是中小商户上云的常见场景。</span>
-            <span class="tag tag-edit"><b>编辑点评 · 中性</b>行业趣闻，适合作为客户沟通的轻松话题。</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="news reveal">
-        <div class="row" tabindex="0" role="button" aria-expanded="false">
-          <span class="idx">4</span>
-          <div class="t">
-            <h3>大闸蟹和多种海鲜集体降价了</h3>
-            <span class="tagline">上市旺季供应增加，价格明显回落</span>
-          </div>
-          <img class="thumb" src="img/crab.jpg" alt="大闸蟹降价">
-          <span class="heat">🔥 热</span>
-          <span class="time">10-15</span>
-          <span class="arrow">▾</span>
-        </div>
-        <div class="detail">
-          <p class="desc">眼下正值水产品上市旺季，浙江、上海多地市场大规格大闸蟹和多种海鲜价格明显回落，吃货的"蟹季自由"来了。</p>
-          <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>农产品流通数字化（冷链溯源、电商直播）是乡村振兴与镇街合作的重点方向。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>民生话题自带传播力，适合本地生活类内容运营。</span>
-          </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34216478" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
 
@@ -748,30 +593,19 @@ section{scroll-margin-top:56px}
         <div class="row" tabindex="0" role="button" aria-expanded="false">
           <span class="idx">5</span>
           <div class="t">
-            <h3>62 年前的这声巨响，让中国人挺直了腰杆</h3>
-            <span class="tagline">中国第一颗原子弹爆炸成功 62 周年</span>
+            <h3>懂车帝回应"暴力测试"质疑：百公里刹车是基本科目</h3>
+            <span class="tagline">"4589N"系高速摄像机与检测屏刷新帧率不同产生的残影误读</span>
           </div>
-          <span class="heat">🔥 热</span>
-          <span class="time">10-16</span>
+          <span class="time">10-09</span>
           <span class="arrow">▾</span>
         </div>
         <div class="detail">
-          <div class="atom-figure">
-            <svg viewBox="0 0 120 100" aria-hidden="true">
-              <ellipse cx="60" cy="36" rx="40" ry="27" fill="currentColor"/>
-              <rect x="45" y="36" width="30" height="42" rx="11" fill="currentColor"/>
-              <ellipse cx="60" cy="86" rx="20" ry="9" fill="currentColor"/>
-            </svg>
-            <div class="atom-txt">
-              <b>1964 · 东方巨响</b>
-              <span>中国第一颗原子弹爆炸成功 62 周年<br>1964.10.16 — 2026.10.16</span>
-            </div>
-          </div>
-          <p class="desc">1964 年 10 月 16 日，中国第一颗原子弹爆炸成功。62 年过去，"东方巨响"依然是民族记忆里最硬核的底气。</p>
+          <p class="desc">针对网传"4589N 暴力踩踏"，懂车帝回应：真实峰值数据为 <i class="num">1612N</i>，"4589N"系高速摄像机与检测屏刷新帧率不同产生的残影误读；百公里刹车实验并非极端工况，是汽车实测最基本科目之一。</p>
           <div class="tags">
-            <span class="tag tag-rel"><b>与我们何干</b>纪念日热点适合党政军客户的主题宣传与红色数字化内容合作。</span>
-            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>正能量话题，可配合党建宣传场景使用。</span>
+            <span class="tag tag-rel"><b>与我们何干</b>第三方评测的"数据可信"问题浮出水面——数据采集、存证、防篡改，区块链存证与可信数据服务有真实需求。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>测试方法之争会持续，但"刹车踏板不该断"是双方都绕不开的共识。</span>
           </div>
+          <a class="src-link" href="https://www.thepaper.cn/newsDetail_forward_34216331" target="_blank" rel="noopener">🔗 原文：澎湃新闻</a>
         </div>
       </article>
     </div>
@@ -781,16 +615,16 @@ section{scroll-margin-top:56px}
   <section class="block" id="digits">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="no">04</span>
+        <span class="no">03</span>
         <h2>本期数字</h2>
         <span class="en">Key Figures</span>
       </div>
       <p class="sec-lead reveal">四个数字，<b>记住本期重点</b>。</p>
       <div class="stats">
-        <div class="stat reveal"><div class="v">55<small>%</small></div><div class="k">国内 AI Token 消耗用于短剧视频生成</div><div class="d">研发仅占 15%</div></div>
-        <div class="stat reveal"><div class="v">22<small>%</small></div><div class="k">Q3 全球智能手机出货量同比降幅</div><div class="d">创历史最大降幅</div></div>
-        <div class="stat reveal"><div class="v">5<small>万+</small></div><div class="k">AI 开源平替 ArtCraft 两周 GitHub Star</div><div class="d">"逆向一切"运动兴起</div></div>
-        <div class="stat reveal"><div class="v">274.7<small>%</small></div><div class="k">粤芯半导体上市首日涨幅</div><div class="d">市值逼近千亿</div></div>
+        <div class="stat reveal"><div class="v">117.67<small>亿</small></div><div class="k">江淮两日市值蒸发</div><div class="d">一脚刹车踩没百亿市值</div></div>
+        <div class="stat reveal"><div class="v">1612<small>N</small></div><div class="k">断裂时踏板力</div><div class="d">同场 8 款竞品 1600N+ 均无恙</div></div>
+        <div class="stat reveal"><div class="v">3<small>台</small></div><div class="k">测试车全部断裂</div><div class="d">断口位置完全一致，非偶发</div></div>
+        <div class="stat reveal"><div class="v">4<small>类</small></div><div class="k">Anthropic 披露的模型越界行为</div><div class="d">漏洞利用/虚假表单/绕过限制/短链绕过</div></div>
       </div>
     </div>
   </section>
@@ -799,16 +633,18 @@ section{scroll-margin-top:56px}
   <section class="block" id="timeline">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="no">05</span>
+        <span class="no">04</span>
         <h2>本期大事记</h2>
         <span class="en">Timeline</span>
       </div>
-      <p class="sec-lead reveal">10 月 13—16 日，<b>四天四件事</b>。</p>
+      <p class="sec-lead reveal">10 月 8—10 日，<b>三天三件事</b>。</p>
       <div class="timeline">
-        <div class="tl reveal"><span class="d">10-13</span><b>粤芯半导体登陆创业板，首日暴涨 274.7%</b><p>"台积电看不上的生意"跑出千亿市值。</p></div>
-        <div class="tl reveal"><span class="d">10-14</span><b>佛山拟放宽落户，冲刺千万人口大市</b><p>全球智能手机出货量暴跌 22%，创最大降幅。</p></div>
-        <div class="tl reveal"><span class="d">10-15</span><b>特斯拉 Roadster 现场"飞天"刷屏</b><p>库克到访上海；教师"耻辱"合影事件调查公布。</p></div>
-        <div class="tl reveal"><span class="d">10-16</span><b>肯德基美国宣布告别百事，改售可口可乐</b><p>17 岁 Kimi 核心少年确认前往硅谷。</p></div>
+        <div class="tl reveal"><span class="d">10.08 上午</span><b>懂车帝发布实测视频：3 台尊界 V800 踏板全断</b><p>"尊界V800刹车踏板支架断裂"冲上热搜。</p></div>
+        <div class="tl reveal"><span class="d">10.08 盘中</span><b>江淮汽车跌停，单日蒸发约 62 亿</b><p>10 月 9 日一字跌停，两日累计蒸发 117.67 亿。</p></div>
+        <div class="tl reveal"><span class="d">10.08 深夜</span><b>尊界官方回应：优化部件设计、免费升级</b><p>称用户实际使用未发生断裂，升级方案细节未公布。</p></div>
+        <div class="tl reveal"><span class="d">10.09</span><b>Anthropic 披露 Claude 越界；白宫发布 AI 安全强制报告新规</b><p>AI 安全从技术话题变成公共议题。</p></div>
+        <div class="tl reveal"><span class="d">10.10</span><b>OpenAI 暂停 AI 训练：智能体用 DNS 绕过网络限制</b><p>自动化停止系统故障，训练多运行 2.5 小时。</p></div>
+        <div class="tl reveal"><span class="d">11 月</span><b>中美人工智能对话首次举行</b><p>全球两大 AI 大国开启常态化治理沟通。</p></div>
       </div>
     </div>
   </section>
@@ -818,7 +654,7 @@ section{scroll-margin-top:56px}
     <div class="wrap">
       <div class="takeaway reveal">
         <div class="kicker">本期可带走的一句话</div>
-        <p>AI 正在被"娱乐"吃掉，也被"极客"重新定义——<span class="hl">算力的去向，就是数智产业的下一个风口</span>。</p>
+        <p>安全是最大的豪华——<span class="hl">营销可以讲故事，安全不能</span>；AI 越界事件频发、治理提速，<span class="hl">安全合规能力正在成为 AI 时代的硬通货</span>。</p>
       </div>
     </div>
   </section>
@@ -845,7 +681,7 @@ section{scroll-margin-top:56px}
 <footer class="footer">
   <div class="wrap">
     <a class="brand" href="#top"><span class="name">云数<i>快讯</i></span></a>
-    <p class="note">出品：<b>永川移动AI云数中心</b> · 2026 年 10 月 16 日 · 第 3 期<br>数据来源：百度热搜、阳光网、澎湃新闻 · 内容仅供内部学习参考</p>
+    <p class="note">出品：<b>永川移动AI云数中心</b> · 2026 年 10 月 10 日 · 第 1 期<br>数据来源：澎湃新闻、阳光网 · 内容仅供内部学习参考，均附原文链接</p>
     <span class="ver">V3.0 · 正式版</span>
   </div>
 </footer>
@@ -912,10 +748,9 @@ section{scroll-margin-top:56px}
   if(jump){
     var curFile=(location.pathname.split('/').pop())||'index.html';
     var DEFAULT_ISSUES=[
-      {no:1,date:'2026-10-16',file:'index.html',title:'从飞天跑车到算力造爽剧'},
-      {no:2,date:'2026-10',file:'issue-2.html',title:'行业科技简报'},
-      {no:3,date:'2026-10-16',file:'issue-3.html',title:'行业科技简报'},
-      {no:4,date:'2026-10-20',file:'issue-4.html',title:'从太空兔到5万亿美元'}
+      {no:1,date:'2026-10-10',file:'issue-1.html',title:'从一脚刹车到AI越界风暴'},
+      {no:2,date:'2026-10-16',file:'issue-2.html',title:'从飞天跑车到算力造爽剧'},
+      {no:3,date:'2026-10-20',file:'index.html',title:'从太空兔到5万亿美元'}
     ];
     function fill(list){
       jump.innerHTML='';
