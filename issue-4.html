@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="云数快讯 · 热点新闻快讯。永川移动AI云数中心出品，聚焦近期全网热议的科技与民生大事。">
+<title>云数快讯 · 热点新闻快讯 | 永川移动AI云数中心</title>
+<style>
+/* ============ 基础 ============ */
+:root{
+  --bg:#ffffff; --bg-soft:#f6f8fa; --card:#ffffff;
+  --ink:#111111; --ink-2:#333333; --muted:#8a8f98; --line:#e6e8ec; --line-soft:#f0f2f5;
+  --blue:#0d9fe8; --blue-deep:#0a7fc0; --blue-soft:rgba(13,159,232,.07);
+  --red:#e64545; --red-soft:rgba(230,69,69,.06);
+  --gold:#b8860b; --gold-soft:rgba(255,229,92,.16);
+  --serif:'Noto Serif SC','Source Han Serif SC','Source Han Serif CN','SimSun','Songti SC','STSong',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#101114; --bg-soft:#16181d; --card:#16181d;
+  --ink:#e8eaee; --ink-2:#c3c7cf; --muted:#7d828c; --line:#262a31; --line-soft:#1e2229;
+  --blue:#3db5f0; --blue-deep:#5cc2f5; --blue-soft:rgba(61,181,240,.12);
+  --red:#ff6b6b; --red-soft:rgba(255,107,107,.1);
+  --gold:#ffd94d; --gold-soft:rgba(255,217,77,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font:16px/1.75 var(--sans);
+  background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .3s ease,color .3s ease;
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--blue-deep)}
+ul{list-style:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+section{scroll-margin-top:56px}
+.serif{font-family:var(--serif)}
+
+/* ============ 顶部导航（新闻门户式白底） ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;height:56px;gap:12px}
+.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap;flex:none}
+.brand .name{
+  font-family:var(--serif);font-weight:900;font-size:1.3em;color:var(--ink);
+  letter-spacing:.06em;line-height:1;
+}
+.brand .name i{font-style:normal;color:var(--blue)}
+.brand .sub{font-size:.66em;color:var(--muted);letter-spacing:.1em}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  font-size:.85em;font-weight:600;color:var(--ink-2);white-space:nowrap;
+  padding:7px 11px;border-radius:6px;transition:color .2s,background .2s;
+}
+.nav a.on{color:var(--blue);background:var(--blue-soft)}
+.nav a:hover{color:var(--blue)}
+.icon-btn{
+  width:36px;height:36px;border-radius:6px;flex:none;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--ink-2);
+  font-size:1rem;display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s;
+}
+.icon-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ 头条（头版头条式） ============ */
+.hero{border-bottom:1px solid var(--line);padding:26px 0 22px}
+.hero .wrap{position:relative}
+.hero-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.hero-top .flag{
+  font-size:.78em;font-weight:800;letter-spacing:.14em;color:#fff;
+  background:var(--blue);padding:4px 12px;border-radius:3px;
+}
+.hero-top .date{font-size:.82em;color:var(--muted);letter-spacing:.04em}
+.hero-top .hot-live{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+  font-size:.76em;font-weight:700;color:var(--red);
+}
+.hero-top .hot-live .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.5rem,4.8vw,2.3rem);line-height:1.35;
+  letter-spacing:.01em;margin-bottom:10px;
+}
+.hero h1 .hl{color:var(--blue)}
+.hero .lead{font-size:clamp(.92rem,2.6vw,1.02rem);color:var(--ink-2);max-width:40em;margin-bottom:14px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:14px;font-size:.8em;color:var(--muted)}
+.hero .meta b{color:var(--red);font-weight:700}
+
+/* 头条大卡 */
+.lead-card{
+  margin-top:20px;border:1px solid var(--line);border-left:4px solid var(--blue);
+  background:var(--bg-soft);padding:18px 20px 16px;
+}
+.lead-inner{display:flex;gap:20px;align-items:flex-start}
+.lead-text{flex:1;min-width:0}
+.lead-media{flex:none;width:min(340px,42%);margin:0}
+.lead-media img{width:100%;height:auto;border-radius:6px;display:block;border:1px solid var(--line)}
+@media(max-width:720px){
+  .lead-inner{flex-direction:column}
+  .lead-media{width:100%}
+}
+.lead-card .kicker{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.1em;margin-bottom:8px}
+.lead-card h2{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(1.12rem,3.6vw,1.5rem);line-height:1.45;margin-bottom:8px;
+}
+.lead-card .sub{font-size:.88em;color:var(--ink-2);margin-bottom:10px}
+.lead-card .desc{font-size:.86em;color:var(--muted);line-height:1.75;border-top:1px dashed var(--line);padding-top:10px}
+.lead-card .foot{display:flex;gap:14px;margin-top:10px;font-size:.76em;color:var(--muted)}
+.lead-card .foot .src{color:var(--blue);font-weight:700}
+
+/* 头条数据图形（成本降幅） */
+.cost-fig{
+  flex:none;width:min(300px,40%);margin:0;
+  background:linear-gradient(120deg,#10141c,#1c2434 55%,#12263a);
+  border:1px solid #2c3a52;border-radius:6px;
+  padding:14px 16px;color:#e8ecf4;
+}
+.cost-fig svg{width:100%;height:auto;display:block}
+.cost-fig .cap{font-size:.72em;color:#8fa3bd;margin-top:8px;line-height:1.6}
+@media(max-width:720px){
+  .lead-inner{flex-direction:column}
+  .cost-fig{width:100%}
+}
+
+/* 副头条两列 */
+.sub-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:14px;border:1px solid var(--line);border-top:none}
+@media(min-width:720px){.sub-grid{grid-template-columns:1fr 1fr}}
+.sub-card{padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--bg)}
+.sub-card:last-child{border-bottom:none}
+@media(min-width:720px){.sub-card:nth-child(1){border-right:1px solid var(--line-soft);border-bottom:none}}
+.sub-inner{display:flex;gap:14px;align-items:flex-start}
+.sub-txt{flex:1;min-width:0}
+.sub-img{flex:none;width:110px;height:74px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
+@media(max-width:560px){.sub-img{width:96px;height:64px}}
+.sub-card .no{font-family:var(--serif);font-size:.78em;font-weight:800;color:var(--blue);letter-spacing:.08em}
+.sub-card h3{font-size:1em;font-weight:700;line-height:1.5;margin:4px 0 6px}
+.sub-card h3 a{color:var(--ink)}
+.sub-card h3 a:hover{color:var(--blue)}
+.sub-card p{font-size:.84em;color:var(--muted);line-height:1.7}
+.sub-card p b{color:var(--blue);font-weight:700}
+.sub-card .meta{display:flex;gap:12px;margin-top:8px;font-size:.74em;color:var(--muted)}
+.sub-card .meta .src{color:var(--blue);font-weight:700}
+
+/* ============ 板块（栏目化） ============ */
+.block{padding:30px 0 6px}
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px;
+}
+.sec-head .no{
+  font-family:var(--serif);font-size:.8em;font-weight:800;color:#fff;
+  background:var(--blue);padding:3px 10px;border-radius:3px;letter-spacing:.06em;flex:none;
+}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.15rem,3.2vw,1.4rem);font-weight:900;letter-spacing:.04em}
+.sec-head .en{font-size:.68em;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.sec-lead{font-size:.88em;color:var(--muted);padding:10px 2px 12px;border-bottom:1px solid var(--line-soft)}
+.sec-lead b{color:var(--ink-2)}
+
+/* 新闻列表（标题列表式，点击展开） */
+.news{border-bottom:1px solid var(--line);background:var(--bg)}
+.news .row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 2px;cursor:pointer;user-select:none;
+  transition:background .2s;
+}
+.news .row:hover{background:var(--bg-soft)}
+.news .row .idx{
+  font-family:var(--serif);font-size:.8em;font-weight:800;color:var(--blue);
+  flex:none;width:1.6em;text-align:center;
+}
+.news .row .idx.hot{color:var(--red)}
+.news .row .t{flex:1;min-width:0}
+.news .row .thumb{flex:none;width:96px;height:64px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
+@media(max-width:560px){.news .row .thumb{width:84px;height:56px}}
+.news .row .t h3{
+  font-size:1em;font-weight:700;line-height:1.5;color:var(--ink);
+  transition:color .2s;
+}
+.news .row:hover .t h3{color:var(--blue)}
+.news .row .t .tagline{font-size:.76em;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.news .row .time{flex:none;font-size:.74em;color:var(--muted);white-space:nowrap}
+.news .row .heat{flex:none;font-size:.7em;font-weight:700;color:var(--red);background:var(--red-soft);border-radius:3px;padding:2px 7px}
+.news .row .arrow{flex:none;color:var(--muted);font-size:.8em;transition:transform .25s}
+.news.open .row .arrow{transform:rotate(180deg);color:var(--blue)}
+/* 展开详情 */
+.news .detail{display:none;padding:0 2px 18px}
+.news.open .detail{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.news .detail .desc{font-size:.88em;color:var(--ink-2);line-height:1.8;margin-bottom:10px}
+.news .detail .desc .num{color:var(--blue);font-weight:700;font-style:normal}
+.news .detail .tags{display:flex;flex-direction:column;gap:7px}
+.tag{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:.8em;line-height:1.6;padding:8px 12px;border-radius:4px;
+}
+.tag b{flex:none;font-weight:800;white-space:nowrap}
+.tag-rel{background:var(--blue-soft);color:var(--ink-2);border-left:3px solid var(--blue)}
+.tag-rel b{color:var(--blue)}
+.tag-edit{background:var(--gold-soft);color:var(--ink-2);border-left:3px solid var(--gold)}
+.tag-edit b{color:var(--gold)}
+.tag-edit b.good{color:#1a9e6e}
+.tag-edit b.risk{color:var(--red)}
+[data-theme="dark"] .tag-edit b{color:#ffd94d}
+[data-theme="dark"] .tag-edit b.good{color:#3ecf9a}
+[data-theme="dark"] .tag-edit b.risk{color:#ff6b6b}
+
+/* ============ 本期数字（报纸数据栏） ============ */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-top:3px solid var(--blue);margin-top:12px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:18px 14px 14px;text-align:center;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--bg)}
+.stat:nth-child(2n){border-right:none}
+@media(min-width:720px){.stat{border-bottom:none}.stat:nth-child(2n){border-right:1px solid var(--line-soft)}.stat:last-child{border-right:none}}
+.stat .v{
+  font-family:var(--serif);font-weight:900;color:var(--blue);
+  font-size:clamp(1.5rem,5vw,2rem);line-height:1.2;
+}
+.stat .v small{font-size:.45em;font-weight:800;color:var(--muted)}
+.stat .k{font-size:.78em;color:var(--ink-2);margin-top:6px;line-height:1.55}
+.stat .d{font-size:.7em;color:var(--muted);margin-top:3px}
+
+/* ============ 大事记（时间线） ============ */
+.timeline{position:relative;margin:14px 0 4px;padding-left:24px}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:var(--line);border-radius:2px;
+}
+.tl{position:relative;padding:0 0 18px}
+.tl:last-child{padding-bottom:2px}
+.tl::before{
+  content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--blue);
+}
+.tl:nth-child(2)::before{border-color:var(--red)}
+.tl:nth-child(3)::before{border-color:var(--gold)}
+.tl .d{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.06em}
+.tl:nth-child(2) .d{color:var(--red)}
+.tl:nth-child(3) .d{color:var(--gold)}
+.tl b{display:block;font-family:var(--serif);font-size:.98em;line-height:1.55;margin-top:3px}
+.tl p{font-size:.82em;color:var(--muted);margin-top:2px}
+
+/* ============ 一句话（社论式） ============ */
+.takeaway{
+  margin:26px 0 6px;border:1px solid var(--ink);border-left:6px solid var(--blue);
+  background:var(--bg-soft);padding:24px 22px;
+}
+.takeaway .kicker{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.14em;margin-bottom:8px}
+.takeaway p{
+  font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.25rem);font-weight:700;
+  line-height:1.8;color:var(--ink);
+}
+.takeaway p .hl{color:var(--blue)}
+
+/* ============ 往期简报跳转 ============ */
+.archive{
+  margin:26px 0 0;border:1px solid var(--line);border-top:3px solid var(--blue);
+  background:var(--bg);padding:18px 20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.archive .a-title{display:flex;align-items:baseline;gap:10px}
+.archive .a-title b{font-family:var(--serif);font-size:1em;font-weight:900;letter-spacing:.04em}
+.archive .a-title span{font-size:.74em;color:var(--muted)}
+.archive select{
+  font-family:var(--sans);font-size:.9em;font-weight:600;color:var(--ink-2);
+  background:var(--bg);border:1px solid var(--line);border-radius:4px;
+  padding:8px 12px;min-width:220px;cursor:pointer;
+  transition:border-color .2s;
+}
+.archive select:focus{outline:none;border-color:var(--blue)}
+.archive .a-hint{font-size:.76em;color:var(--muted)}
+
+/* ============ 页脚 ============ */
+.footer{border-top:1px solid var(--line);padding:24px 0 34px;margin-top:28px;background:var(--bg-soft)}
+.footer .brand{justify-content:center;margin-bottom:8px}
+.footer .brand .name{font-size:1.1em}
+.footer .note{text-align:center;font-size:.78em;color:var(--muted);line-height:1.9}
+.footer .note b{color:var(--ink-2)}
+.footer .ver{
+  display:inline-block;margin-top:10px;
+  font-size:.7em;font-weight:700;letter-spacing:.1em;color:var(--blue);
+  border:1px solid var(--blue);border-radius:3px;padding:2px 10px;
+}
+
+/* ============ 回到顶部 ============ */
+#toTop{
+  position:fixed;right:16px;bottom:16px;z-index:90;
+  width:44px;height:44px;border-radius:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg);color:var(--blue);
+  font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,.08);
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s,transform .3s,border-color .2s;
+}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+#toTop:hover{border-color:var(--blue)}
+
+/* ============ 滚动动画（克制淡入） ============ */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ 移动端微调 ============ */
+@media(max-width:560px){
+  .topbar .wrap{height:52px}
+  .brand .name{font-size:1.15em}
+  .brand .sub{display:none}
+  .nav a{padding:6px 9px;font-size:.8em}
+  .news .row .tagline{display:none}
+  .news .row .t h3{font-size:.96em}
+  .lead-card{padding:16px 16px 14px}
+  .sub-card{padding:13px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= 顶部导航 ======= -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="name">云数<i>快讯</i></span>
+      <span class="sub">HOT NEWS · 热点新闻快讯</span>
+    </a>
+    <nav class="nav" aria-label="板块导航">
+      <a href="#ai" class="on">AI 科技</a>
+      <a href="#industry">产业财经</a>
+      <a href="#society">社会民生</a>
+      <a href="#digits">本期数字</a>
+      <a href="#timeline">大事记</a>
+    </nav>
+    <button class="icon-btn" id="themeToggle" title="切换明暗主题" aria-label="切换明暗主题">🌙</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ======= 头版头条 ======= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <span class="flag">头版头条</span>
+        <span class="date">2026年10月20日 星期二 · 第 4 期</span>
+        <span class="hot-live"><span class="dot"></span>全网热议中</span>
+      </div>
+      <h1>热点新闻快讯<span class="hl">·</span>从"太空兔"到"5万亿美元"</h1>
+      <p class="lead">本期精选全网热议 15 条热点：MiniMax 发布 M3.1 Flash 成本砍七成、苹果市值首破 5 万亿美元、医保个账跨省共济全国落地——茶余饭后，3 分钟看懂数智风向。</p>
+      <div class="meta">
+        <span>🔥 今日热搜 <b>15 条</b></span>
+        <span>📅 数据截至 <b>10-20 10:00</b></span>
+        <span>📡 来源：百度热搜 / 阳光网 / 澎湃</span>
+      </div>
+
+      <!-- 头条大卡 -->
+      <article class="lead-card reveal">
+        <div class="lead-inner">
+          <div class="lead-text">
+            <div class="kicker">🤖 科技 · 大模型价格战 · 全网热议</div>
+            <h2>MiniMax M3.1 Flash 发布：速度提升 3 倍、成本降 70%，"太空兔"认领</h2>
+            <p class="sub">匿名模型 Space Bunny 揭晓真身！中国大模型把推理价格打到每百万 Token 输入 1 元、输出 4 元，10 月 23 日开放权重。</p>
+          </div>
+          <figure class="cost-fig" aria-hidden="true">
+            <svg viewBox="0 0 300 120" role="img" aria-label="使用成本下降 70%">
+              <rect x="36" y="26" width="58" height="66" rx="4" fill="#3a4356"/>
+              <rect x="128" y="62" width="58" height="30" rx="4" fill="#0d9fe8"/>
+              <text x="65" y="112" text-anchor="middle" font-size="12" fill="#8fa3bd">旧成本</text>
+              <text x="157" y="112" text-anchor="middle" font-size="12" fill="#8fa3bd">新成本</text>
+              <line x1="222" y1="88" x2="268" y2="88" stroke="#e64545" stroke-width="3" stroke-linecap="round"/>
+              <polygon points="268,82 278,88 268,94" fill="#e64545"/>
+              <text x="250" y="76" text-anchor="middle" font-size="20" font-weight="800" fill="#ff6b6b">-70%</text>
+            </svg>
+            <div class="cap">单任务成本不到前代一半 · 推理速度 200+ TPS</div>
+          </figure>
+        </div>
+        <div class="desc">10 月 19 日，MiniMax 正式发布新一代 Flash 模型 M3.1 Flash——此前匿名处理超 200T Token 的 Space Bunny 正是它的早期版本。推理速度提升近 3 倍、使用成本降低 <i class="num">70%</i>，100 万 Token 上下文，编程与 Agent 任务能力代际提升；API 定价每百万 Token 输入 1 元、输出 4 元。</div>
+        <div class="foot">
+          <span>来源：<span class="src">新浪科技 / 澎湃</span></span>
+          <span>热度指数 500 万+</span>
+        </div>
+      </article>
+
+      <!-- 副头条 -->
+      <div class="sub-grid">
+        <article class="sub-card reveal">
+          <div class="sub-inner">
+            <div class="sub-txt">
+              <span class="no">01</span>
+              <h3><a href="#ai">美国下令联邦文职机构停用 DeepSeek</a></h3>
+              <p>国土安全部要求停止采购并移除 DeepSeek 产品及基于其开发的第三方服务，<b>五角大楼、NASA 此前已先行禁用</b>。</p>
+              <div class="meta"><span class="src">路透社</span><span>热度 480 万+</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="sub-card reveal">
+          <div class="sub-inner">
+            <div class="sub-txt">
+              <span class="no">02</span>
+              <h3><a href="#industry">苹果市值首破 5 万亿美元</a></h3>
+              <p>股价逆势走强，总市值首次突破 <b>5 万亿美元</b>逼近英伟达，与纳指相关性首次转负，资金转向"轻 AI"资产。</p>
+              <div class="meta"><span class="src">新浪财经</span><span>热度 460 万+</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= AI 科技 ======= -->
+  <section class="block" id="ai">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">01</span>
+        <h2>AI · 科技</h2>
+        <span class="en">AI &amp; Tech</span>
+      </div>
+      <p class="sec-lead reveal">本期最热板块：<b>模型降价、AI 写代码、智能体通关游戏</b>——AI 正在从"能用"走向"好用、便宜用"。</p>
+
+      <article class="news reveal open">
+        <div class="row" tabindex="0" role="button" aria-expanded="true">
+          <span class="idx hot">1</span>
+          <div class="t">
+            <h3>MiniMax M3.1 Flash 发布：成本降 70%，"太空兔"认领</h3>
+            <span class="tagline">每百万 Token 输入 1 元、输出 4 元，10 月 23 日开放权重</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">MiniMax 正式发布 M3.1 Flash，此前匿名处理超 <i class="num">200T Token</i> 的 Space Bunny 正是其早期版本。推理速度提升近 3 倍、使用成本降低 <i class="num">70%</i>，100 万 Token 上下文，编程与 Agent 任务能力代际提升；API 定价每百万 Token 输入 1 元、输出 4 元。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>大模型价格战直接拉低企业上云用 AI 的门槛，云数中心向政企客户推 AI 应用时，"便宜好用"的卖点更硬了。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>推理成本下降利好算力消耗放量，也利好本地 AI 应用推广。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <div class="t">
+            <h3>Claude Code"自产自审"：九成代码不再经过人类</h3>
+            <span class="tagline">Anthropic 披露：PR 数量翻倍，回滚率反降四成</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">Anthropic 官方披露：Claude Code 约 <i class="num">90%</i> 的代码由 Claude 自己编写，大部分审查也由 AI 完成；6 月至 9 月合入 PR 数量翻倍，回滚改动反而减少四成。但最终合入仍须人类签字——<i class="num">AI 写代码、人类把关</i>成为新常态。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 编程提效是政企数字化转型的通用抓手，可向本地软件企业、政企 IT 部门推广 AI 开发工具与算力套餐。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>AI 开发效率叙事强化，软件产业客户上云意愿提升。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <div class="t">
+            <h3>Gemini 4 Argon 组队 27 小时通关《我的世界》</h3>
+            <span class="tagline">四个 AI 智能体自行分工、写程序、打末影龙</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">谷歌 DeepMind 让四个 Gemini 4 Argon 智能体组队，从随机生成的生存世界出发击败末影龙，耗时 <i class="num">27 小时 14 分</i>。期间它们自行编写运行 <i class="num">2783 个程序</i>、死亡 605 次，全程无人工预写策略——AI 协作能力再上台阶。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>多智能体协作是政企复杂业务自动化的方向，可关注本地政务、工业场景的智能体试点机会。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>技术演示性强，适合作为 AI 能力宣传素材。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <div class="t">
+            <h3>OpenAI 三款 Aurora 模型深夜上线又撤回，疑似下一代图像底座</h3>
+            <span class="tagline">aurora-red/green/blue-alpha 现身 API 又消失</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">OpenAI API 后台惊现 aurora-red-alpha、aurora-green-alpha、aurora-blue-alpha 三个"极光"代号模型，随后火速撤回；Arena 灰度测试显示它们生成图像能力惊人，社区猜测是 <i class="num">下一代图像生成底座</i>（或为 GPT-Image-3）。官方未公布身份。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>图像生成能力升级直接利好内容产业客户，本地文创、电商、传媒行业的 AI 工具需求会跟着涨。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>模型迭代加速，关注国产图像模型跟进节奏。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <div class="t">
+            <h3>英伟达完成 104 量子比特容错模拟，所需比特降九成</h3>
+            <span class="tagline">JUPITER 超算跑出迄今最大规模量子容错模拟</span>
+          </div>
+          <span class="time">10-20</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">英伟达在德国 JUPITER 超算（欧洲首台百亿亿次超算）上完成 <i class="num">104 量子比特</i>容错量子处理器模拟，为迄今最大规模；"魔法态培育"方法所需量子比特比此前少 <i class="num">90%</i>，可在真实噪声下预测量子硬件性能。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>GPU 超算成为量子研发关键基础设施，算力中心可关注"超算+量子模拟"类科研客户的算力需求。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>算力价值再获验证，高端算力租赁市场空间扩大。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">6</span>
+          <div class="t">
+            <h3>Anthropic 被曝开发新模型：模糊指令下推断真实意图</h3>
+            <span class="tagline">AI 助手交互范式或从"精确指令"转向"模糊目标"</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">据 The Information 报道，Anthropic 正在开发一款新模型，能在用户指令含糊不清时主动推断其真实目标，推理与问题解决能力更强。若落地，<i class="num">AI 交互范式</i>将从"精确指令"转向"模糊目标"，直接影响编程、数据分析等应用形态。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>意图理解升级意味着 AI 应用门槛进一步降低，普通员工用自然语言驱动业务系统成为可能，是政企智能化新卖点。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>交互范式演进利好 AI 应用普及，提前布局智能客服、智能办公场景。</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 产业财经 ======= -->
+  <section class="block" id="industry">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">02</span>
+        <h2>产业 · 财经</h2>
+        <span class="en">Industry</span>
+      </div>
+      <p class="sec-lead reveal">GDP、苹果、韩股与算力出口——<b>五件事看懂本周经济风向</b>。</p>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">1</span>
+          <div class="t">
+            <h3>前三季度 GDP 同比增长 4.6%，总量突破 107 万亿</h3>
+            <span class="tagline">9 月社零回暖，通讯器材零售增 31.1% 领跑</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">国家统计局 10 月 19 日发布：前三季度国内生产总值 <i class="num">107.1 万亿元</i>，同比增长 <i class="num">4.6%</i>。装备制造业和高技术制造业支撑明显，工业机器人产量同比增 29.1%，3D 打印设备增 62.5%。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>高技术制造业高增长意味着工业互联网、智能工厂需求旺盛，制造业大客户的上云预算有支撑。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>经济基本盘稳，政企客户信息化投入预期向好。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <div class="t">
+            <h3>苹果市值首破 5 万亿美元，与纳指相关性首次转负</h3>
+            <span class="tagline">资金转向"轻 AI"防御性资产</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">苹果股价上周市场大跌中逆势走强，总市值首次突破 <i class="num">5 万亿美元</i>，逼近英伟达全球最高市值；与纳指 100 两个月滚动相关性首次转负。市场对 AI 高资本开支路线质疑加深，资金转向低资本开支、强生态型资产。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 资本开支争议提醒：算力投资要算"投入产出账"，云数中心对外合作需强调应用变现而非单纯堆算力。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>巨头估值分化，AI 叙事进入"算账"阶段。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <div class="t">
+            <h3>亚洲股市普跌，韩股重挫 4.5%，SK 海力士跌逾 7%</h3>
+            <span class="tagline">市场担忧 AI 资本支出可持续性</span>
+          </div>
+          <span class="time">10-20</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">10 月 20 日亚洲股市全线下挫：韩国主要股指跌超 <i class="num">4%</i> 领跌，SK 海力士重挫逾 7%、三星电子跌超 3%；日经 225 跌 1%。美债收益率维持 5.13% 高位，市场等待约 70 家标普 500 公司财报，<i class="num">AI 产业链估值</i>承压。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 硬件股波动提醒算力产业周期性，云数中心在算力投资与政企方案报价上宜稳健、重应用回报。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>全球 AI 资本开支叙事降温，短期情绪面偏空。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <div class="t">
+            <h3>9 月通讯器材零售 1062 亿元，同比增 31.1%</h3>
+            <span class="tagline">9 月社零中唯一增速超 30% 的品类</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">国家统计局数据：9 月限额以上单位通讯器材类零售总额达 <i class="num">1062 亿元</i>，同比增长 <i class="num">31.1%</i>，是当月社零中唯一增速超 30% 的品类；1-9 月累计 8123 亿元，同比增 18.1%。"越涨越买"的换机潮持续。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>通讯器材热销直接拉动 5G 终端渗透与流量消费，是移动用户规模与政企终端业务的直接利好。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>终端景气度高，可借势推以旧换新、政企终端团购。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <div class="t">
+            <h3>润建股份签 2 亿美元海外推理订单，中国算力"服务出口"</h3>
+            <span class="tagline">不出口服务器芯片，只通过 API 交付 Token</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">润建股份公布一年期 <i class="num">2 亿美元</i>海外合同：境外客户购买部署在国内智算中心的大模型推理服务，按实际用量后付费、设年度最低消费保底。公司不出口服务器或芯片，<i class="num">只通过 API 交付 Token 输出</i>——中国算力以"服务出口"变现的一次尝试。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>"算力服务出口"模式验证了智算中心的变现路径，云数中心可借鉴：把算力包装成可计量的 API 服务卖给政企客户。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>算力商业模式从"卖硬件"走向"卖服务"，本地智算中心运营有样板可循。</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 社会民生 ======= -->
+  <section class="block" id="society">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">03</span>
+        <h2>社会 · 民生</h2>
+        <span class="en">Society</span>
+      </div>
+      <p class="sec-lead reveal">医保、AI 救人、星巴克与汇源——<b>这些身边事，件件有热度</b>。</p>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">1</span>
+          <div class="t">
+            <h3>医保钱包 2.0 上线：个账跨省共济全国落地</h3>
+            <span class="tagline">10 月 16 日起全国上线，个账的钱能给外省家人用</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">国家医保局 10 月 19 日发布：医保钱包迭代至 2.0 版，自 10 月 16 日起全国全部上线，<i class="num">医保个人账户跨省共济</i>给近亲属全面落地。支持就医购药及城乡医保、长护险缴费；省内共济 5 年来累计超 7.8 亿人次、金额超 1000 亿元。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>医保数字化是政务云与民生应用的典型场景，跨省共济背后是数据互通与安全能力，可对接本地医保部门信息化需求。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>民生数字化标杆案例，适合作为政务合作谈资。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <div class="t">
+            <h3>女子离婚 6 天用 AI 救前夫一命</h3>
+            <span class="tagline">AI 提示"高度疑似肺栓塞"，医生加查 CT 确诊</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">35 岁罗女士离婚 6 天后接到前夫电话：对方腹痛住院、全套检查未查出病因。罗女士将症状和检查结果发给 AI，AI 提示<i class="num">高度疑似致命肺栓塞</i>；医生增加胸部增强 CT 后确诊，当即下病危通知并手术，前夫一周后康复。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 辅助医疗是政企大客户场景，本地医院"AI 预检分诊、辅助诊断"类合作可借此类案例打开话题。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>AI 救人案例传播力强，是医疗行业数字化的最佳广告。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <div class="t">
+            <h3>星巴克"消费入座"引热议：官方称不属实，门店称物料已到</h3>
+            <span class="tagline">"请消费入座"桌牌冲上热搜，孕妇外卖员可豁免</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">网友晒出星巴克《第三空间倡议》物料，桌牌印着"请消费入座"，网传 10 月 20 日实施、冲上热搜。星巴克中国回应"不属实"，但北京门店店员称物料已到、明天摆牌；孕妇、外卖员、避雨路人可免消费进店休息。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>连锁门店数字化（客流分析、会员运营）是商户上云场景，品牌舆情也提醒：数字化规则设计要兼顾体验。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>消费话题自带流量，适合作为客户沟通的轻松谈资。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <div class="t">
+            <h3>汇源集团声明：不再生产"汇源"果汁，启用"咱家果源"</h3>
+            <span class="tagline">称重整投资人 8.5 亿元投资款未兑现，已启动法律程序</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">10 月 19 日北京汇源集团声明：重整投资人上海文盛资产未兑现投资承诺，尚有 <i class="num">8.5 亿元</i>投资款未支付，构成根本违约，已启动法律程序；汇源集团及下属企业不再生产带"汇源"商标的果汁，北京汇源食品饮料有限公司已启用"咱家果源"品牌。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>老牌企业重整与品牌切割背后是供应链与渠道数字化重构，本地食品饮料企业的数字化升级需求可关注。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>品牌信任危机，提醒企业数字化建设中合规与风控的重要性。</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <div class="t">
+            <h3>广州一村发生态补偿款：每人 3.65 元</h3>
+            <span class="tagline">13927.2 元发给 3826 名股东，账目晒在阳光下</span>
+          </div>
+          <span class="time">10-19</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">广州番禺区化龙镇潭山村发放生态公益林补偿款共 <i class="num">13927.2 元</i>，发给 3826 名村集体股东，每人 <i class="num">3.65 元</i>。通知贴出、账目公开，"无论多少均按程序发放"收获大量点赞。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>村集体资金透明化是数字乡村治理场景，账务公开小程序、村务数字化平台是镇街合作切入点。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>基层治理正能量案例，可作数字乡村方案参考。</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 本期数字 ======= -->
+  <section class="block" id="digits">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">04</span>
+        <h2>本期数字</h2>
+        <span class="en">Key Figures</span>
+      </div>
+      <p class="sec-lead reveal">四个数字，<b>记住本期重点</b>。</p>
+      <div class="stats">
+        <div class="stat reveal"><div class="v">70<small>%</small></div><div class="k">MiniMax M3.1 Flash 使用成本降幅</div><div class="d">推理速度提升近 3 倍</div></div>
+        <div class="stat reveal"><div class="v">5<small>万亿</small></div><div class="k">苹果总市值首破 5 万亿美元</div><div class="d">逼近英伟达全球最高</div></div>
+        <div class="stat reveal"><div class="v">4.6<small>%</small></div><div class="k">前三季度 GDP 同比增速</div><div class="d">总量 107.1 万亿元</div></div>
+        <div class="stat reveal"><div class="v">31.1<small>%</small></div><div class="k">9 月通讯器材零售同比增速</div><div class="d">销售额 1062 亿元</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 大事记 ======= -->
+  <section class="block" id="timeline">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">05</span>
+        <h2>本期大事记</h2>
+        <span class="en">Timeline</span>
+      </div>
+      <p class="sec-lead reveal">10 月 17—20 日，<b>四天四件事</b>。</p>
+      <div class="timeline">
+        <div class="tl reveal"><span class="d">10-17</span><b>DeepSeek V4.1 Flash-1017 上线，正面硬刚 MiniMax</b><p>中国大模型"性价比战"进入白热化。</p></div>
+        <div class="tl reveal"><span class="d">10-18</span><b>第五届亚残运会在名古屋开幕</b><p>"山姆被指品质暴跌"同日冲上热搜第一。</p></div>
+        <div class="tl reveal"><span class="d">10-19</span><b>MiniMax 发布 M3.1 Flash，成本降 70%</b><p>国家统计局公布前三季度 GDP 增 4.6%；医保钱包 2.0 全国上线。</p></div>
+        <div class="tl reveal"><span class="d">10-20</span><b>苹果官宣 10 月 28 日新品发布会</b><p>LPR 出炉：1 年期 3.0%、5 年期以上 3.5%。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 一句话 ======= -->
+  <section class="block">
+    <div class="wrap">
+      <div class="takeaway reveal">
+        <div class="kicker">本期可带走的一句话</div>
+        <p>大模型正在"白菜价"化——<span class="hl">算力成本下降的速度，就是数智应用爆发的速度</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 往期简报 ======= -->
+  <section class="block">
+    <div class="wrap">
+      <div class="archive reveal">
+        <div class="a-title">
+          <b>往期简报</b>
+          <span>ARCHIVE</span>
+        </div>
+        <select id="issueJump" aria-label="往期简报跳转">
+          <option value="issue-4.html" selected>第 4 期 · 2026-10-20（当前）</option>
+          <option value="index.html">第 1 期 · 2026-10-16</option>
+          <option value="issue-2.html" disabled>第 2 期 · 敬请期待</option>
+          <option value="issue-3.html" disabled>第 3 期 · 敬请期待</option>
+        </select>
+        <span class="a-hint">选择期数后自动跳转</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======= 页脚 ======= -->
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="name">云数<i>快讯</i></span></a>
+    <p class="note">出品：<b>永川移动AI云数中心</b> · 2026 年 10 月 20 日 · 第 4 期<br>数据来源：百度热搜、阳光网、澎湃新闻 · 内容仅供内部学习参考</p>
+    <span class="ver">V3.0 · 正式版</span>
+  </div>
+</footer>
+
+<button id="toTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  /* 明暗主题 */
+  var root=document.documentElement;
+  var saved=null;
+  try{saved=localStorage.getItem('yckx-theme')}catch(e){}
+  var dark=saved? saved==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(dark)root.setAttribute('data-theme','dark');
+  var btn=document.getElementById('themeToggle');
+  var icon=function(){btn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'};
+  icon();
+  btn.addEventListener('click',function(){
+    var d=root.getAttribute('data-theme')==='dark';
+    if(d)root.removeAttribute('data-theme');else root.setAttribute('data-theme','dark');
+    try{localStorage.setItem('yckx-theme',d?'light':'dark')}catch(e){}
+    icon();
+  });
+
+  /* 新闻展开/收起（手风琴） */
+  var news=document.querySelectorAll('.news');
+  news.forEach(function(item){
+    var row=item.querySelector('.row');
+    row.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      news.forEach(function(n){n.classList.remove('open');n.querySelector('.row').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');item.querySelector('.row').setAttribute('aria-expanded','true')}
+    });
+    row.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();row.click()}
+    });
+  });
+
+  /* 滚动动画 */
+  var els=document.querySelectorAll('.reveal');
+  function showInView(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    els.forEach(function(el){
+      if(el.classList.contains('in'))return;
+      var rc=el.getBoundingClientRect();
+      if(rc.top<vh-20)el.classList.add('in');
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+      });
+    },{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+    els.forEach(function(el){io.observe(el)});
+    window.addEventListener('scroll',function(){showInView()},{passive:true});
+  }else{
+    els.forEach(function(el){el.classList.add('in')});
+  }
+  showInView();
+
+  /* 期数跳转 */
+  var jump=document.getElementById('issueJump');
+  jump.addEventListener('change',function(){
+    if(this.value&&!this.options[this.selectedIndex].disabled){
+      window.location.href=this.value;
+    }
+  });
+
+  /* 回到顶部 */
+  var top=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>500)top.classList.add('show');else top.classList.remove('show');
+  },{passive:true});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
