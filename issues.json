@@ -2,6 +2,8 @@
   "updated": "2026-10-20",
   "issues": [
     { "no": 1, "date": "2026-10-16", "file": "index.html", "title": "从飞天跑车到算力造爽剧" },
+    { "no": 2, "date": "2026-10", "file": "issue-2.html", "title": "行业科技简报" },
+    { "no": 3, "date": "2026-10-16", "file": "issue-3.html", "title": "行业科技简报" },
     { "no": 4, "date": "2026-10-20", "file": "issue-4.html", "title": "从太空兔到5万亿美元" }
   ]
 }
