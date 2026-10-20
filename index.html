@@ -820,10 +820,7 @@ section{scroll-margin-top:56px}
           <span>ARCHIVE</span>
         </div>
         <select id="issueJump" aria-label="往期简报跳转">
-          <option value="index.html" selected>第 1 期 · 2026-10-16（当前）</option>
-          <option value="issue-4.html">第 4 期 · 2026-10-20</option>
-          <option value="issue-2.html" disabled>第 2 期 · 敬请期待</option>
-          <option value="issue-3.html" disabled>第 3 期 · 敬请期待</option>
+          <option value="">加载中…</option>
         </select>
         <span class="a-hint">选择期数后自动跳转</span>
       </div>
@@ -898,12 +895,29 @@ section{scroll-margin-top:56px}
   }
   showInView();
 
-  /* 期数跳转 */
+  /* 期数跳转（动态拉取 issues.json 目录，本地打开时用内置兜底） */
   var jump=document.getElementById('issueJump');
+  var curFile=(location.pathname.split('/').pop())||'index.html';
+  var DEFAULT_ISSUES=[
+    {no:1,date:'2026-10-16',file:'index.html',title:'从飞天跑车到算力造爽剧'},
+    {no:4,date:'2026-10-20',file:'issue-4.html',title:'从太空兔到5万亿美元'}
+  ];
+  function fillIssues(list){
+    jump.innerHTML='';
+    list.forEach(function(it){
+      var o=document.createElement('option');
+      o.value=it.file;
+      o.textContent='第 '+it.no+' 期 · '+it.date+(it.title?' · '+it.title:'');
+      if(it.file===curFile){o.selected=true;o.textContent+='（当前）'}
+      jump.appendChild(o);
+    });
+  }
+  fillIssues(DEFAULT_ISSUES);
+  fetch('issues.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+    if(d&&d.issues&&d.issues.length){fillIssues(d.issues)}
+  }).catch(function(){});
   jump.addEventListener('change',function(){
-    if(this.value&&!this.options[this.selectedIndex].disabled){
-      window.location.href=this.value;
-    }
+    if(this.value){window.location.href=this.value}
   });
 
   /* 回到顶部 */
