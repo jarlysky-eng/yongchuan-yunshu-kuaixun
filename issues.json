@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20",
+  "updated": "2026-10-22",
   "issues": [
     {
       "no": 1,
@@ -16,8 +16,14 @@
     {
       "no": 3,
       "date": "2026-10-20",
-      "file": "index.html",
+      "file": "issue-3.html",
       "title": "从太空兔到5万亿美元"
+    },
+    {
+      "no": 4,
+      "date": "2026-10-22",
+      "file": "index.html",
+      "title": "从AI越界到意念操控"
     }
   ]
 }
