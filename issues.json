@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-28",
   "issues": [
     {
       "no": 1,
@@ -22,8 +22,14 @@
     {
       "no": 4,
       "date": "2026-10-22",
-      "file": "index.html",
+      "file": "issue-4.html",
       "title": "从AI越界到意念操控"
+    },
+    {
+      "no": 5,
+      "date": "2026-10-28",
+      "file": "index.html",
+      "title": "从2万亿IPO到4800亿蒸发"
     }
   ]
 }
