@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-11-02",
   "issues": [
     {
       "no": 1,
@@ -28,8 +28,14 @@
     {
       "no": 5,
       "date": "2026-10-28",
-      "file": "index.html",
+      "file": "issue-5.html",
       "title": "从2万亿IPO到4800亿蒸发"
+    },
+    {
+      "no": 6,
+      "date": "2026-10-30",
+      "file": "index.html",
+      "title": "从5000亿蒸发到算力大网"
     }
   ]
 }
