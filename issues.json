@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "issues": [
     {
       "no": 1,
@@ -34,8 +34,14 @@
     {
       "no": 6,
       "date": "2026-10-30",
-      "file": "index.html",
+      "file": "issue-6.html",
       "title": "从5000亿蒸发到算力大网"
+    },
+    {
+      "no": 7,
+      "date": "2026-11-09",
+      "file": "index.html",
+      "title": "从3774亿现金到23小时交易"
     }
   ]
 }
