@@ -926,14 +926,15 @@ section{scroll-margin-top:56px}
   /* 期数跳转（动态拉取 issues.json 目录，本地打开时用内置兜底） */
   var jump=document.getElementById('issueJump');
   var curFile=(location.pathname.split('/').pop())||'index.html';
-    var DEFAULT_ISSUES=[
+        var DEFAULT_ISSUES=[
     {no:1,date:'2026-10-10',file:'issue-1.html',title:'从一脚刹车到AI越界风暴'},
     {no:2,date:'2026-10-16',file:'issue-2.html',title:'从飞天跑车到算力造爽剧'},
     {no:3,date:'2026-10-20',file:'issue-3.html',title:'从太空兔到5万亿美元'},
     {no:4,date:'2026-10-22',file:'issue-4.html',title:'从AI越界到意念操控'},
     {no:5,date:'2026-10-28',file:'issue-5.html',title:'从2万亿IPO到4800亿蒸发'},
     {no:6,date:'2026-10-30',file:'issue-6.html',title:'从5000亿蒸发到算力大网'},
-    {no:7,date:'2026-11-09',file:'index.html',title:'从3774亿现金到23小时交易'}
+    {no:7,date:'2026-11-09',file:'issue-7.html',title:'从3774亿现金到23小时交易'},
+    {no:8,date:'2026-11-12',file:'index.html',title:'从1.4万亿美元到30B大模型入端'}
   ];
   function fillIssues(list){
     jump.innerHTML='';

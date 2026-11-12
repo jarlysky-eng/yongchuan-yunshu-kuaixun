@@ -1,0 +1,955 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="云数快讯 · 热点新闻快讯。永川移动AI云数中心出品，聚焦近期全网热议的科技与民生大事。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云数快讯 · 第7期：从&quot;3774亿现金&quot;到&quot;23小时交易&quot;">
+<meta property="og:description" content="本期精选全网热议 16 条热点：AI 股全球抛售、美股 10 月市值蒸发 1.5 万亿美元、纳斯达克 12 月 6 日起 23 小时交易、伯克希尔现金储备 3774 亿美元创新高、长征十二号成功发射——3 分钟看懂数智风向。">
+<meta property="og:image" content="img/issue7-01-headline.jpg">
+<title>云数快讯 · 热点新闻快讯 | 永川移动AI云数中心</title>
+<style>
+/* ============ 基础 ============ */
+:root{
+  --bg:#ffffff; --bg-soft:#f6f8fa; --card:#ffffff;
+  --ink:#111111; --ink-2:#333333; --muted:#8a8f98; --line:#e6e8ec; --line-soft:#f0f2f5;
+  --blue:#0d9fe8; --blue-deep:#0a7fc0; --blue-soft:rgba(13,159,232,.07);
+  --red:#e64545; --red-soft:rgba(230,69,69,.06);
+  --gold:#b8860b; --gold-soft:rgba(255,229,92,.16);
+  --serif:'Noto Serif SC','Source Han Serif SC','Source Han Serif CN','SimSun','Songti SC','STSong',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#101114; --bg-soft:#16181d; --card:#16181d;
+  --ink:#e8eaee; --ink-2:#c3c7cf; --muted:#7d828c; --line:#262a31; --line-soft:#1e2229;
+  --blue:#3db5f0; --blue-deep:#5cc2f5; --blue-soft:rgba(61,181,240,.12);
+  --red:#ff6b6b; --red-soft:rgba(255,107,107,.1);
+  --gold:#ffd94d; --gold-soft:rgba(255,217,77,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font:16px/1.75 var(--sans);
+  background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  transition:background-color .3s ease,color .3s ease;
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--blue-deep)}
+ul{list-style:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+section{scroll-margin-top:56px}
+.serif{font-family:var(--serif)}
+
+/* ============ 顶部导航（新闻门户式白底） ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;height:56px;gap:12px}
+.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap;flex:none}
+.brand .name{
+  font-family:var(--serif);font-weight:900;font-size:1.3em;color:var(--ink);
+  letter-spacing:.06em;line-height:1;
+}
+.brand .name i{font-style:normal;color:var(--blue)}
+.brand .sub{font-size:.66em;color:var(--muted);letter-spacing:.1em}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  font-size:.85em;font-weight:600;color:var(--ink-2);white-space:nowrap;
+  padding:7px 11px;border-radius:6px;transition:color .2s,background .2s;
+}
+.nav a.on{color:var(--blue);background:var(--blue-soft)}
+.nav a:hover{color:var(--blue)}
+.icon-btn{
+  width:36px;height:36px;border-radius:6px;flex:none;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--ink-2);
+  font-size:1rem;display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s;
+}
+.icon-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ============ 头条（头版头条式） ============ */
+.hero{border-bottom:1px solid var(--line);padding:26px 0 22px}
+.hero .wrap{position:relative}
+.hero-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.hero-top .flag{
+  font-size:.78em;font-weight:800;letter-spacing:.14em;color:#fff;
+  background:var(--blue);padding:4px 12px;border-radius:3px;
+}
+.hero-top .date{font-size:.82em;color:var(--muted);letter-spacing:.04em}
+.hero-top .hot-live{
+  margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+  font-size:.76em;font-weight:700;color:var(--red);
+}
+.hero-top .hot-live .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.5rem,4.8vw,2.3rem);line-height:1.35;
+  letter-spacing:.01em;margin-bottom:10px;
+}
+.hero h1 .hl{color:var(--blue)}
+.hero .lead{font-size:clamp(.92rem,2.6vw,1.02rem);color:var(--ink-2);max-width:40em;margin-bottom:14px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:14px;font-size:.8em;color:var(--muted)}
+.hero .meta b{color:var(--red);font-weight:700}
+
+/* 头条大卡 */
+.lead-card{
+  margin-top:20px;border:1px solid var(--line);border-left:4px solid var(--blue);
+  background:var(--bg-soft);padding:18px 20px 16px;
+}
+.lead-inner{display:flex;gap:20px;align-items:flex-start}
+.lead-text{flex:1;min-width:0}
+.lead-media{flex:none;width:min(340px,42%);margin:0}
+.lead-media img{width:100%;height:auto;border-radius:6px;display:block;border:1px solid var(--line)}
+@media(max-width:720px){
+  .lead-inner{flex-direction:column}
+  .lead-media{width:100%}
+}
+.lead-card .kicker{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.1em;margin-bottom:8px}
+.lead-card h2{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(1.12rem,3.6vw,1.5rem);line-height:1.45;margin-bottom:8px;
+}
+.lead-card .sub{font-size:.88em;color:var(--ink-2);margin-bottom:10px}
+.lead-card .desc{font-size:.86em;color:var(--muted);line-height:1.75;border-top:1px dashed var(--line);padding-top:10px}
+.lead-card .desc .num{color:var(--blue);font-weight:700;font-style:normal}
+.lead-card .foot{display:flex;gap:14px;margin-top:10px;font-size:.76em;color:var(--muted)}
+.lead-card .foot .src{color:var(--blue);font-weight:700}
+
+/* 副头条两列 */
+.sub-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:14px;border:1px solid var(--line);border-top:none}
+@media(min-width:720px){.sub-grid{grid-template-columns:1fr 1fr}}
+.sub-card{padding:14px 18px;border-bottom:1px solid var(--line-soft);background:var(--bg)}
+.sub-card:last-child{border-bottom:none}
+@media(min-width:720px){.sub-card:nth-child(1){border-right:1px solid var(--line-soft);border-bottom:none}}
+.sub-inner{display:flex;gap:14px;align-items:flex-start}
+.sub-txt{flex:1;min-width:0}
+.sub-img{flex:none;width:110px;height:74px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
+@media(max-width:560px){.sub-img{width:96px;height:64px}}
+.sub-card .no{font-family:var(--serif);font-size:.78em;font-weight:800;color:var(--blue);letter-spacing:.08em}
+.sub-card h3{font-size:1em;font-weight:700;line-height:1.5;margin:4px 0 6px}
+.sub-card h3 a{color:var(--ink)}
+.sub-card h3 a:hover{color:var(--blue)}
+.sub-card p{font-size:.84em;color:var(--muted);line-height:1.7}
+.sub-card p b{color:var(--blue);font-weight:700}
+.sub-card .meta{display:flex;gap:12px;margin-top:8px;font-size:.74em;color:var(--muted)}
+.sub-card .meta .src{color:var(--blue);font-weight:700}
+
+/* ============ 板块（栏目化） ============ */
+.block{padding:30px 0 6px}
+.sec-head{
+  display:flex;align-items:baseline;gap:12px;
+  border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px;
+}
+.sec-head .no{
+  font-family:var(--serif);font-size:.8em;font-weight:800;color:#fff;
+  background:var(--blue);padding:3px 10px;border-radius:3px;letter-spacing:.06em;flex:none;
+}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.15rem,3.2vw,1.4rem);font-weight:900;letter-spacing:.04em}
+.sec-head .en{font-size:.68em;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.sec-lead{font-size:.88em;color:var(--muted);padding:10px 2px 12px;border-bottom:1px solid var(--line-soft)}
+.sec-lead b{color:var(--ink-2)}
+
+/* 新闻列表（标题列表式，点击展开） */
+.news{border-bottom:1px solid var(--line);background:var(--bg)}
+.news .row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 2px;cursor:pointer;user-select:none;
+  transition:background .2s;
+}
+.news .row:hover{background:var(--bg-soft)}
+.news .row .idx{
+  font-family:var(--serif);font-size:.8em;font-weight:800;color:var(--blue);
+  flex:none;width:1.6em;text-align:center;
+}
+.news .row .idx.hot{color:var(--red)}
+.news .row .t{flex:1;min-width:0}
+.news .row .thumb{flex:none;width:96px;height:64px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:var(--bg-soft)}
+@media(max-width:560px){.news .row .thumb{width:84px;height:56px}}
+.news .row .t h3{
+  font-size:1em;font-weight:700;line-height:1.5;color:var(--ink);
+  transition:color .2s;
+}
+.news .row:hover .t h3{color:var(--blue)}
+.news .row .t .tagline{font-size:.76em;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.news .row .time{flex:none;font-size:.74em;color:var(--muted);white-space:nowrap}
+.news .row .heat{flex:none;font-size:.7em;font-weight:700;color:var(--red);background:var(--red-soft);border-radius:3px;padding:2px 7px}
+.news .row .arrow{flex:none;color:var(--muted);font-size:.8em;transition:transform .25s}
+.news.open .row .arrow{transform:rotate(180deg);color:var(--blue)}
+/* 展开详情 */
+.news .detail{display:none;padding:0 2px 18px}
+.news.open .detail{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.news .detail .desc{font-size:.88em;color:var(--ink-2);line-height:1.8;margin-bottom:10px}
+.news .detail .desc .num{color:var(--blue);font-weight:700;font-style:normal}
+.news .detail .tags{display:flex;flex-direction:column;gap:7px}
+.tag{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:.8em;line-height:1.6;padding:8px 12px;border-radius:4px;
+}
+.tag b{flex:none;font-weight:800;white-space:nowrap}
+.tag-rel{background:var(--blue-soft);color:var(--ink-2);border-left:3px solid var(--blue)}
+.tag-rel b{color:var(--blue)}
+.tag-edit{background:var(--gold-soft);color:var(--ink-2);border-left:3px solid var(--gold)}
+.tag-edit b{color:var(--gold)}
+.tag-edit b.good{color:#1a9e6e}
+.tag-edit b.risk{color:var(--red)}
+[data-theme="dark"] .tag-edit b{color:#ffd94d}
+[data-theme="dark"] .tag-edit b.good{color:#3ecf9a}
+[data-theme="dark"] .tag-edit b.risk{color:#ff6b6b}
+/* 原文链接 */
+.src-link{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:.76em;font-weight:700;color:var(--blue);
+  border:1px solid var(--blue);border-radius:4px;
+  padding:3px 10px;margin-top:8px;
+  transition:background .2s,color .2s;
+}
+.src-link:hover{background:var(--blue);color:#fff}
+
+
+/* ============ 本期数字（报纸数据栏） ============ */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-top:3px solid var(--blue);margin-top:12px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{padding:18px 14px 14px;text-align:center;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--bg)}
+.stat:nth-child(2n){border-right:none}
+@media(min-width:720px){.stat{border-bottom:none}.stat:nth-child(2n){border-right:1px solid var(--line-soft)}.stat:last-child{border-right:none}}
+.stat .v{
+  font-family:var(--serif);font-weight:900;color:var(--blue);
+  font-size:clamp(1.5rem,5vw,2rem);line-height:1.2;
+}
+.stat .v small{font-size:.45em;font-weight:800;color:var(--muted)}
+.stat .k{font-size:.78em;color:var(--ink-2);margin-top:6px;line-height:1.55}
+.stat .d{font-size:.7em;color:var(--muted);margin-top:3px}
+
+/* ============ 大事记（时间线） ============ */
+.timeline{position:relative;margin:14px 0 4px;padding-left:24px}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:var(--line);border-radius:2px;
+}
+.tl{position:relative;padding:0 0 18px}
+.tl:last-child{padding-bottom:2px}
+.tl::before{
+  content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--blue);
+}
+.tl:nth-child(2)::before{border-color:var(--red)}
+.tl:nth-child(3)::before{border-color:var(--gold)}
+.tl:nth-child(4)::before{border-color:var(--blue)}
+.tl .d{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.06em}
+.tl:nth-child(2) .d{color:var(--red)}
+.tl:nth-child(3) .d{color:var(--gold)}
+.tl:nth-child(4) .d{color:var(--blue)}
+.tl b{display:block;font-family:var(--serif);font-size:.98em;line-height:1.55;margin-top:3px}
+.tl p{font-size:.82em;color:var(--muted);margin-top:2px}
+
+/* ============ 一句话（社论式） ============ */
+.takeaway{
+  margin:26px 0 6px;border:1px solid var(--ink);border-left:6px solid var(--blue);
+  background:var(--bg-soft);padding:24px 22px;
+}
+.takeaway .kicker{font-size:.76em;font-weight:800;color:var(--blue);letter-spacing:.14em;margin-bottom:8px}
+.takeaway p{
+  font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.25rem);font-weight:700;
+  line-height:1.8;color:var(--ink);
+}
+.takeaway p .hl{color:var(--blue)}
+
+/* ============ 往期简报跳转 ============ */
+.archive{
+  margin:26px 0 0;border:1px solid var(--line);border-top:3px solid var(--blue);
+  background:var(--bg);padding:18px 20px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.archive .a-title{display:flex;align-items:baseline;gap:10px}
+.archive .a-title b{font-family:var(--serif);font-size:1em;font-weight:900;letter-spacing:.04em}
+.archive .a-title span{font-size:.74em;color:var(--muted)}
+.archive select{
+  font-family:var(--sans);font-size:.9em;font-weight:600;color:var(--ink-2);
+  background:var(--bg);border:1px solid var(--line);border-radius:4px;
+  padding:8px 12px;min-width:220px;cursor:pointer;
+  transition:border-color .2s;
+}
+.archive select:focus{outline:none;border-color:var(--blue)}
+.archive .a-hint{font-size:.76em;color:var(--muted)}
+
+/* ============ 页脚 ============ */
+.footer{border-top:1px solid var(--line);padding:24px 0 34px;margin-top:28px;background:var(--bg-soft)}
+.footer .brand{justify-content:center;margin-bottom:8px}
+.footer .brand .name{font-size:1.1em}
+.footer .note{text-align:center;font-size:.78em;color:var(--muted);line-height:1.9}
+.footer .note b{color:var(--ink-2)}
+.footer .ver{
+  display:inline-block;margin-top:10px;
+  font-size:.7em;font-weight:700;letter-spacing:.1em;color:var(--blue);
+  border:1px solid var(--blue);border-radius:3px;padding:2px 10px;
+}
+
+/* ============ 回到顶部 ============ */
+#toTop{
+  position:fixed;right:16px;bottom:16px;z-index:90;
+  width:44px;height:44px;border-radius:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg);color:var(--blue);
+  font-size:1.15rem;box-shadow:0 4px 16px rgba(0,0,0,.08);
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s,transform .3s,border-color .2s;
+}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+#toTop:hover{border-color:var(--blue)}
+
+/* ============ 滚动动画（克制淡入） ============ */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ 移动端微调 ============ */
+@media(max-width:560px){
+  .topbar .wrap{height:52px}
+  .brand .name{font-size:1.15em}
+  .brand .sub{display:none}
+  .nav a{padding:6px 9px;font-size:.8em}
+  .news .row .tagline{display:none}
+  .news .row .t h3{font-size:.96em}
+  .lead-card{padding:16px 16px 14px}
+  .sub-card{padding:13px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= 顶部导航 ======= -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="name">云数<i>快讯</i></span>
+      <span class="sub">HOT NEWS · 热点新闻快讯</span>
+    </a>
+    <nav class="nav" aria-label="板块导航">
+      <a href="#ai" class="on">AI 科技</a>
+      <a href="#industry">产业财经</a>
+      <a href="#society">社会民生</a>
+      <a href="#digits">本期数字</a>
+      <a href="#timeline">大事记</a>
+    </nav>
+    <button class="icon-btn" id="themeToggle" title="切换明暗主题" aria-label="切换明暗主题">🌙</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ======= 头版头条 ======= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <span class="flag">头版头条</span>
+        <span class="date">2026年11月9日 星期一 · 第 7 期</span>
+        <span class="hot-live"><span class="dot"></span>全网热议中</span>
+      </div>
+      <h1>热点新闻快讯<span class="hl">·</span>从"3774亿现金"到"23小时交易"</h1>
+      <p class="lead">本期精选全网热议 16 条热点：AI 股全球抛售、美股 10 月市值蒸发 1.5 万亿美元、纳斯达克 12 月 6 日起 23 小时交易、伯克希尔现金储备 3774 亿美元创新高、长征十二号成功发射——茶余饭后，3 分钟看懂数智风向。</p>
+      <div class="meta">
+        <span>🔥 今日热搜 <b>16 条</b></span>
+        <span>📅 数据截至 <b>11-09 12:00</b></span>
+        <span>📡 来源：观察者网 / 界面新闻 / 中新网 / 新华网 / 东方财富</span>
+      </div>
+
+      <!-- 头条大卡 -->
+      <article class="lead-card reveal">
+        <div class="lead-inner">
+          <div class="lead-text">
+            <div class="kicker">📉 财经 · 美股 · AI 资本退潮</div>
+            <h2>AI 股全球抛售：美股 10 月市值蒸发逾 1.5 万亿美元</h2>
+            <p class="sub">纳指重挫 5.3%，杠杆清仓与追加保证金连锁反应蔓延；高盛预计约 45% 计划数据中心容量面临短期暂停令。</p>
+          </div>
+          <figure class="lead-media">
+            <img src="img/issue7-01-headline.jpg" alt="AI 股全球抛售，美股 10 月市值蒸发逾 1.5 万亿美元">
+          </figure>
+        </div>
+        <div class="desc">本周 AI 板块遭遇全球抛售：美股 10 月市值蒸发逾 <i class="num">1.5 万亿美元</i>，纳指重挫 5.3%，杠杆清仓与追加保证金引发连锁反应蔓延。美国中期选举后，高盛预计约 <i class="num">45%</i> 计划数据中心容量面临短期暂停令；Anthropic 招股书披露约 <i class="num">8954 亿美元</i>采购与租赁承诺，引发评级争议——市场对 AI 资本开支"兑现能力"的分歧正在加大。</div>
+        <div class="foot">
+          <span>来源：<span class="src">ReadAI Time / 综合</span></span>
+          <span>热度指数 900 万+</span>
+        </div>
+      </article>
+
+      <!-- 副头条 -->
+      <div class="sub-grid">
+        <article class="sub-card reveal">
+          <div class="sub-inner">
+            <img class="sub-img" src="img/issue7-04-nasdaq.jpg" alt="纳斯达克 23 小时交易">
+            <div class="sub-txt">
+              <span class="no">01</span>
+              <h3><a href="#industry">纳斯达克 12 月 6 日起进入 23 小时交易时代</a></h3>
+              <p>每周 5 天、每天 <b>23 小时</b>连续开放交易，美股交易时长大幅延长，全球资本"7×24"渐近。</p>
+              <div class="meta"><span class="src">东方财富</span><span>热度 620 万+</span></div>
+            </div>
+          </div>
+        </article>
+        <article class="sub-card reveal">
+          <div class="sub-inner">
+            <img class="sub-img" src="img/issue7-03-berkshire.jpg" alt="伯克希尔现金储备创新高">
+            <div class="sub-txt">
+              <span class="no">02</span>
+              <h3><a href="#industry">伯克希尔 Q3 现金升至 3774 亿美元，创历史新高</a></h3>
+              <p>净利润大降 <b>28%</b>，回购创年内单季新高，"现金为王"防御姿态引市场关注。</p>
+              <div class="meta"><span class="src">腾讯新闻</span><span>热度 480 万+</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= AI 科技 ======= -->
+  <section class="block" id="ai">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">01</span>
+        <h2>AI · 科技</h2>
+        <span class="en">AI &amp; Tech</span>
+      </div>
+      <p class="sec-lead reveal">本期最热板块：<b>仿真训练、卫星互联网、光刻机、AI 发电厂</b>——AI 竞争从"拼模型"延伸到"拼能源、拼硬件、拼基础设施"。</p>
+
+      <article class="news reveal open">
+        <div class="row" tabindex="0" role="button" aria-expanded="true">
+          <span class="idx hot">1</span>
+          <img class="thumb" src="img/issue7-02-halo.jpg" alt="苹果 HALO 教宇树 G1 机器人">
+          <div class="t">
+            <h3>苹果 HALO 教宇树 G1 机器人"看懂"陌生房间</h3>
+            <span class="tagline">300 小时仿真数据训练，360 次真实试验完成率 91%</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">苹果研究团队用 <i class="num">300 小时</i>仿真生成的运动数据训练宇树 G1 人形机器人，<i class="num">360 次</i>真实世界试验完成 <i class="num">91%</i>，全程无需遥操作数据——"仿真数据训练、真实世界泛化"的路线再获验证，人形机器人的训练成本门槛有望大幅下降。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>具身智能"仿真训练"路线成熟，机器人规模化落地成本下降；云数中心可关注机器人云端大脑、数据回传与算力需求。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>仿真数据大幅降低机器人训练门槛，具身智能产业化提速。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.humanoidsdaily.com/news/apple-halo-humanoid-synthetic-data-unitree-g1" target="_blank" rel="noopener">🔗 原文：Humanoids Daily</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <img class="thumb" src="img/issue7-05-satellite.jpg" alt="长征十二号发射卫星互联网卫星">
+          <div class="t">
+            <h3>长征十二号成功发射卫星互联网低轨 29 组卫星</h3>
+            <span class="tagline">长征系列第 676 次发射，我国首款 4 米级箭径单芯级火箭</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-09</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">11 月 9 日 4 时 24 分，长征十二号运载火箭在海南商业航天发射场点火起飞，成功将卫星互联网低轨 29 组卫星送入预定轨道。长十二是我国首款 <i class="num">4 米级</i>箭径单芯级火箭，全长约 62 米，700 公里太阳同步轨道运载能力不低于 <i class="num">6 吨</i>。本次是长征系列第 <i class="num">676 次</i>发射。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>卫星互联网组网加速，低轨星座对地面网络形成补充；运营商可关注天地一体网络、卫星通信与应急保障场景。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>商业航天产业化提速，天地一体信息网络建设进入快车道。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.guancha.cn/ZhengZhi/2026_11_09_907570.shtml" target="_blank" rel="noopener">🔗 原文：观察者网</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <img class="thumb" src="img/issue7-13-litho.jpg" alt="我国新一代光刻机模型亮相进博会">
+          <div class="t">
+            <h3>我国新一代光刻机模型亮相进博会</h3>
+            <span class="tagline">光刻装备自主化实现突破，信创产业高地建设提速</span>
+          </div>
+          <span class="time">11-09</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">第九届进博会上，我国新一代光刻机模型亮相，光刻装备自主化实现突破；同期北京经开区发文建设信创产业高地，商业航天产业化提速——硬科技自主可控成为本届进博会焦点之一。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>光刻机等硬科技自主化带动国产算力与信创产业链；政企信创改造与国产化替代是云数中心重点场景。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>关键装备自主化突破，信创产业链景气度持续上行。</span>
+          </div>
+        
+          <a class="src-link" href="https://finance.eastmoney.com/news/11874,202611093925768355.html" target="_blank" rel="noopener">🔗 原文：东方财富</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <img class="thumb" src="img/issue7-14-anthropic.jpg" alt="Anthropic 采购天然气发电设备">
+          <div class="t">
+            <h3>Anthropic 斥资 34 亿美元采购天然气发电设备</h3>
+            <span class="tagline">大模型军备竞赛烧到"发电厂"，AI 算力与能源绑定加深</span>
+          </div>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">AI 公司 Anthropic 斥资 <i class="num">34 亿美元</i>采购天然气发电设备，为数据中心供电——大模型军备竞赛烧到"发电厂"，AI 算力与能源的绑定进一步加深。此前 OpenAI 等巨头也纷纷布局自建能源设施，AI 的"电力瓶颈"正成为行业共识。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 算力扩张的核心约束从"芯片"转向"电力"；运营商智算中心可强化绿色能源与能效管理能力，作为方案卖点。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>算力耗电激增推高运营成本，"电从哪来"成 AI 扩张硬约束。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.jiemian.com/article/15308219.html" target="_blank" rel="noopener">🔗 原文：界面新闻</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <div class="t">
+            <h3>中国移动云与智谱签署合作协议</h3>
+            <span class="tagline">启元机器人第 10000 台个人机器人下线，拓斯达发布工业双足机器人</span>
+          </div>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">界面 AI 早报：中国移动云公司与北京智谱华章签署合作协议，国产大模型与运营商云生态深度绑定；上纬新材旗下启元机器人第 <i class="num">10000 台</i>个人机器人下线；拓斯达发布工业双足人形机器人 Star，双臂负载能力达 <i class="num">10 公斤</i>。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>中国移动云与智谱合作，运营商云+国产大模型组合再落一子；云数中心可借势推广"移动云+国产模型"的政企方案。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>运营商云与国产大模型生态协同加深，国产 AI 落地场景扩容。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.jiemian.com/article/15308219.html" target="_blank" rel="noopener">🔗 原文：界面新闻</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 产业财经 ======= -->
+  <section class="block" id="industry">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">02</span>
+        <h2>产业 · 财经</h2>
+        <span class="en">Industry</span>
+      </div>
+      <p class="sec-lead reveal">从 23 小时交易到 3774 亿现金储备——<b>全球资本用脚投票，AI 资本开支进入"兑现期"</b>。</p>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">1</span>
+          <img class="thumb" src="img/issue7-04-nasdaq.jpg" alt="纳斯达克 23 小时交易">
+          <div class="t">
+            <h3>纳斯达克 5×23：12 月 6 日起进入 23 小时交易时代</h3>
+            <span class="tagline">每周 5 天、每天 23 小时连续开放交易</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">据纳斯达克官网消息，纳斯达克计划于当地时间 12 月 6 日正式实施"23/5"交易制度——每周 5 天、每天 <i class="num">23 小时</i>连续开放交易，美股交易时长将大幅延长，全球资本市场的"7×24"时代渐行渐近。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>全球交易时长延长，金融数据服务、行情推送、跨境专线需求上升；可关注金融机构网络与算力服务机会。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>交易制度变革利好数据服务，但波动风险同步放大。</span>
+          </div>
+        
+          <a class="src-link" href="http://finance.eastmoney.com/a/202611083925587380.html" target="_blank" rel="noopener">🔗 原文：东方财富</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <img class="thumb" src="img/issue7-03-berkshire.jpg" alt="伯克希尔三季度业绩">
+          <div class="t">
+            <h3>伯克希尔 Q3 净利大降 28%，现金升至 3774 亿美元</h3>
+            <span class="tagline">回购创年内单季新高，"现金为王"防御姿态引关注</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-07</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">伯克希尔·哈撒韦公布 2026 年三季度业绩：运营利润 <i class="num">127.05 亿美元</i>、同比降 5.8%；净利润大降 <i class="num">28%</i>；回购创年内单季新高，现金储备升至 <i class="num">3774 亿美元</i>、创历史新高——"现金为王"的防御姿态引发市场关注。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>全球资本巨头转守为攻，风险资产配置趋于谨慎；政企数字化投资的"算账"逻辑同样要更精细。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>巨头现金堆积反映估值偏高与机会稀缺，市场风险偏好下降。</span>
+          </div>
+        
+          <a class="src-link" href="https://news.qq.com/rain/a/20261107A0DMKF00" target="_blank" rel="noopener">🔗 原文：腾讯新闻</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <img class="thumb" src="img/issue7-12-starship.jpg" alt="星舰第 15 次试飞">
+          <div class="t">
+            <h3>星舰第 15 次试飞将至：首次尝试"双回收"</h3>
+            <span class="tagline">商业航天产业化提速，A 股航天概念受关注</span>
+          </div>
+          <span class="time">11-09</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">A 股热点前瞻：星舰第 <i class="num">15</i> 次试飞将首次尝试"双回收"，商业航天产业化提速；我国新一代光刻机模型亮相进博会；北京经开区发文建设信创产业高地。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>商业航天带动卫星通信、地面站与算力需求；天地一体网络是运营商未来重要增长极。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>可回收火箭成熟将大幅降低发射成本，太空经济进入放量期。</span>
+          </div>
+        
+          <a class="src-link" href="https://finance.eastmoney.com/news/11874,202611093925768355.html" target="_blank" rel="noopener">🔗 原文：东方财富</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <img class="thumb" src="img/issue7-01-headline.jpg" alt="数据中心监管与电力约束">
+          <div class="t">
+            <h3>中期选举冲击数据中心：高盛预计 45% 计划容量面临暂停</h3>
+            <span class="tagline">欧洲多地因电力问题抗议，AI 基建"能源-监管"双重约束显现</span>
+          </div>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">美国中期选举后，高盛预计约 <i class="num">45%</i> 计划数据中心容量面临短期暂停令；欧洲多地（爱尔兰、荷兰）数据中心因电力问题遭抗议——AI 基建的"能源-监管"双重约束显现。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>数据中心选址与审批趋严，绿电与合规成为算力项目关键要素；云数中心智算项目可提前布局绿电与能耗指标。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>监管与电力双重约束，AI 基建扩张节奏或放缓。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.readaitime.com/deep/ai-weekly-2026-11-08" target="_blank" rel="noopener">🔗 原文：ReadAI Time</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <img class="thumb" src="img/issue7-14-anthropic.jpg" alt="AI 巨头融资潮">
+          <div class="t">
+            <h3>纳斯达克之外：AI 巨头融资潮与 IPO 争议</h3>
+            <span class="tagline">Anthropic 披露 8954 亿美元采购租赁承诺，评级争议发酵</span>
+          </div>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">Anthropic 提交招股书修订稿，披露约 <i class="num">8954 亿美元</i>采购与租赁承诺，引发评级争议；本周 AI 巨头融资潮持续——市场对 AI 资本开支的"兑现能力"分歧加大。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>AI 资本开支进入"兑现期"，市场用现金流与承诺履约给 AI 定价；政企算力项目的回报测算成为方案竞争力关键。</span>
+            <span class="tag tag-edit"><b class="risk">编辑点评 · 风险</b>巨额承诺与现金流缺口并存，AI 估值泡沫风险上升。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.readaitime.com/deep/ai-weekly-2026-11-08" target="_blank" rel="noopener">🔗 原文：ReadAI Time</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 社会民生 ======= -->
+  <section class="block" id="society">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">03</span>
+        <h2>社会 · 民生</h2>
+        <span class="en">Society</span>
+      </div>
+      <p class="sec-lead reveal">进博会、医保钱包、生育津贴——<b>政策红利与消费新风口，件件关乎你我</b>。</p>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">1</span>
+          <img class="thumb" src="img/issue7-07-yibao.jpg" alt="医保钱包 2.0 上线">
+          <div class="t">
+            <h3>医保钱包 2.0 上线：个人账户跨省共济落地</h3>
+            <span class="tagline">前三季度省内共济 3.8 亿人次、金额 467.62 亿元</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-05</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">国家医保局发布医保钱包 2.0：全国已全面实现职工医保个人账户省内共济，跨省共济加快落地。前三季度省内共济 <i class="num">3.8 亿人次</i>、金额 <i class="num">467.62 亿元</i>；跨省共济 <i class="num">181.74 万人次</i>、14.57 亿元；支持消费的定点医药机构达 <i class="num">75.41 万家</i>。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>医保数字化升级带动政务云、数据安全与移动支付场景；可关注本地医保信息化与便民服务合作。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>医保服务"全国一盘棋"提速，民生数字化红利释放。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.chinanews.com.cn/sh/2026/11-05/10726616.shtml" target="_blank" rel="noopener">🔗 原文：中新网</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx hot">2</span>
+          <img class="thumb" src="img/issue7-08-yinfa.jpg" alt="进博会银发黑科技">
+          <div class="t">
+            <h3>进博会银发"黑科技"：智慧养老成焦点</h3>
+            <span class="tagline">162 个国家地区、4142 家境外企业参展，面积首破 44 万平方米</span>
+          </div>
+          <span class="heat">🔥 热</span>
+          <span class="time">11-08</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">第九届进博会汇聚 <i class="num">162 个国家地区</i>、4142 家境外企业，面积首破 <i class="num">44 万平方米</i>。支持无接触健康监测的按摩椅、可 360 度探测声音的人工耳蜗、无线感知跌倒检测系统、适老化旅居车等银发科技集中亮相。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>智慧养老是政企大客户场景蓝海；健康监测、跌倒检测等设备依赖物联网与网络连接，可关注本地养老信息化项目。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>银发经济叠加数字化，适老科技市场空间广阔。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.xinhuanet.com/20261108/891bc42eba12404d8021eac32ac37e1f/c.html" target="_blank" rel="noopener">🔗 原文：新华网</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">3</span>
+          <img class="thumb" src="img/issue7-09-qingxu.jpg" alt="进博会情绪消费">
+          <div class="t">
+            <h3>进博会"情绪消费"风头正劲</h3>
+            <span class="tagline">乐高 26400 朵积木花拼"花浪"，优衣库按留言升级老款</span>
+          </div>
+          <span class="time">11-07</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">乐高用 <i class="num">26400 朵</i>积木花拼成"花浪"首次聚焦成年消费者；羊驼毛玩偶品牌英乔展位从首届 18 平方米扩到 108 平方米；优衣库 12 件"老款"按中国消费者留言细节升级——"情绪价值"成为消费新风口。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>消费新趋势带动零售数字化与内容营销需求；AI 生成内容、精准营销可赋能本地商贸客户。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>情绪消费崛起反映消费结构变化，品牌运营逻辑生变。</span>
+          </div>
+        
+          <a class="src-link" href="http://www.ce.cn/xwzx/gnsz/gdxw/202611/t20261107_3287059.shtml" target="_blank" rel="noopener">🔗 原文：中国经济网</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">4</span>
+          <img class="thumb" src="img/issue7-10-shengyu.jpg" alt="生育津贴直发个人">
+          <div class="t">
+            <h3>前 9 个月生育津贴支出超 781 亿元</h3>
+            <span class="tagline">生育保险基金支出 1010 亿元，津贴全面实现直发个人</span>
+          </div>
+          <span class="time">11-03</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">国家医保局数据：今年前 9 个月生育保险基金支出 <i class="num">1010 亿元</i>、惠及 <i class="num">3355 万人次</i>，其中生育津贴支出 <i class="num">781.61 亿元</i>、全面实现直发个人；分娩镇痛已全面纳入医保报销。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>生育支持政策加码，政务便民服务与数据平台需求上升；可关注本地医保、人社信息化项目。</span>
+            <span class="tag tag-edit"><b class="good">编辑点评 · 利好</b>生育保障落地见效，民生政策红利持续释放。</span>
+          </div>
+        
+          <a class="src-link" href="https://cn.chinadaily.com.cn/a/202611/03/WS6ae94185e4b0e14252fc8c18.html" target="_blank" rel="noopener">🔗 原文：中国日报网</a>
+        </div>
+      </article>
+
+      <article class="news reveal">
+        <div class="row" tabindex="0" role="button" aria-expanded="false">
+          <span class="idx">5</span>
+          <img class="thumb" src="img/issue7-11-canbao.jpg" alt="居民医保参保情况">
+          <div class="t">
+            <h3>居民医保参保"七连降"？国家医保局回应</h3>
+            <span class="tagline">2026 年基本医保参保总体稳中有升，参保 13.28 亿人</span>
+          </div>
+          <span class="time">11-05</span>
+          <span class="arrow">▾</span>
+        </div>
+        <div class="detail">
+          <p class="desc">针对"居民医保参保人数七连降、减少 8300 万"说法，国家医保局回应：2026 年基本医保参保总体稳中有升，截至 9 月底参保 <i class="num">13.28 亿人</i>；居民医保个人缴费 <i class="num">400 元</i>连续三年不变，财政补助从 670 元增至 <i class="num">724 元</i>。</p>
+          <div class="tags">
+            <span class="tag tag-rel"><b>与我们何干</b>医保参保数据治理与舆情回应体现政务数字化能力；可关注医保大数据与便民服务平台建设。</span>
+            <span class="tag tag-edit"><b>编辑点评 · 中性</b>官方回应澄清数据误读，缴费与补助结构变化值得关注。</span>
+          </div>
+        
+          <a class="src-link" href="https://www.chinanews.com.cn/jk/2026/11-05/10726844.shtml" target="_blank" rel="noopener">🔗 原文：中新网</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======= 本期数字 ======= -->
+  <section class="block" id="digits">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">04</span>
+        <h2>本期数字</h2>
+        <span class="en">Key Figures</span>
+      </div>
+      <p class="sec-lead reveal">四个数字，<b>记住本期重点</b>。</p>
+      <div class="stats">
+        <div class="stat reveal"><div class="v">1.5<small>万亿美元</small></div><div class="k">美股 10 月 AI 板块蒸发市值</div><div class="d">纳指重挫 5.3%，杠杆连锁反应蔓延</div></div>
+        <div class="stat reveal"><div class="v">3774<small>亿美元</small></div><div class="k">伯克希尔现金储备</div><div class="d">创历史新高，净利大降 28%</div></div>
+        <div class="stat reveal"><div class="v">23<small>小时</small></div><div class="k">纳斯达克每日交易时长</div><div class="d">12 月 6 日起实施"23/5"制度</div></div>
+        <div class="stat reveal"><div class="v">676<small>次</small></div><div class="k">长征系列火箭发射次数</div><div class="d">长十二发射卫星互联网 29 组</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 大事记 ======= -->
+  <section class="block" id="timeline">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="no">05</span>
+        <h2>本期大事记</h2>
+        <span class="en">Timeline</span>
+      </div>
+      <p class="sec-lead reveal">11 月 5—9 日，<b>一周五件事</b>。</p>
+      <div class="timeline">
+        <div class="tl reveal"><span class="d">11-05</span><b>第九届进博会开幕，医保钱包 2.0 上线</b><p>162 个国家地区参展、面积首破 44 万平方米；医保个人账户跨省共济加快落地。</p></div>
+        <div class="tl reveal"><span class="d">11-07</span><b>伯克希尔 Q3 现金升至 3774 亿美元</b><p>净利润大降 28%，回购创年内单季新高，"现金为王"防御姿态引关注。</p></div>
+        <div class="tl reveal"><span class="d">11-08</span><b>纳斯达克官宣 12 月 6 日起 23 小时交易</b><p>每周 5 天、每天 23 小时连续开放，美股交易时长大幅延长。</p></div>
+        <div class="tl reveal"><span class="d">11-09</span><b>长征十二号发射卫星互联网低轨 29 组卫星</b><p>长征系列第 676 次发射，我国首款 4 米级箭径单芯级火箭。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 一句话 ======= -->
+  <section class="block">
+    <div class="wrap">
+      <div class="takeaway reveal">
+        <div class="kicker">本期可带走的一句话</div>
+        <p>AI 军备竞赛烧到"发电厂"——<span class="hl">市场用 1.5 万亿美元蒸发提醒：算力扩张必须回答"谁来买单、何时盈利"</span>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 往期简报 ======= -->
+  <section class="block">
+    <div class="wrap">
+      <div class="archive reveal">
+        <div class="a-title">
+          <b>往期简报</b>
+          <span>ARCHIVE</span>
+        </div>
+        <select id="issueJump" aria-label="往期简报跳转">
+          <option value="">加载中…</option>
+        </select>
+        <span class="a-hint">选择期数后自动跳转</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======= 页脚 ======= -->
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="name">云数<i>快讯</i></span></a>
+    <p class="note">出品：<b>永川移动AI云数中心</b> · 2026 年 11 月 9 日 · 第 7 期<br>数据来源：观察者网、界面新闻、中新网、新华网、东方财富等 · 内容仅供内部学习参考</p>
+    <span class="ver">V3.0 · 正式版</span>
+  </div>
+</footer>
+
+<button id="toTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  /* 明暗主题 */
+  var root=document.documentElement;
+  var saved=null;
+  try{saved=localStorage.getItem('yckx-theme')}catch(e){}
+  var dark=saved? saved==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(dark)root.setAttribute('data-theme','dark');
+  var btn=document.getElementById('themeToggle');
+  var icon=function(){btn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'};
+  icon();
+  btn.addEventListener('click',function(){
+    var d=root.getAttribute('data-theme')==='dark';
+    if(d)root.removeAttribute('data-theme');else root.setAttribute('data-theme','dark');
+    try{localStorage.setItem('yckx-theme',d?'light':'dark')}catch(e){}
+    icon();
+  });
+
+  /* 新闻展开/收起（手风琴） */
+  var news=document.querySelectorAll('.news');
+  news.forEach(function(item){
+    var row=item.querySelector('.row');
+    row.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      news.forEach(function(n){n.classList.remove('open');n.querySelector('.row').setAttribute('aria-expanded','false')});
+      if(!isOpen){item.classList.add('open');item.querySelector('.row').setAttribute('aria-expanded','true')}
+    });
+    row.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();row.click()}
+    });
+  });
+
+  /* 滚动动画 */
+  var els=document.querySelectorAll('.reveal');
+  function showInView(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    els.forEach(function(el){
+      if(el.classList.contains('in'))return;
+      var rc=el.getBoundingClientRect();
+      if(rc.top<vh-20)el.classList.add('in');
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+      });
+    },{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+    els.forEach(function(el){io.observe(el)});
+    window.addEventListener('scroll',function(){showInView()},{passive:true});
+  }else{
+    els.forEach(function(el){el.classList.add('in')});
+  }
+  showInView();
+
+  /* 期数跳转（动态拉取 issues.json 目录，本地打开时用内置兜底） */
+  var jump=document.getElementById('issueJump');
+  var curFile=(location.pathname.split('/').pop())||'index.html';
+        var DEFAULT_ISSUES=[
+    {no:1,date:'2026-10-10',file:'issue-1.html',title:'从一脚刹车到AI越界风暴'},
+    {no:2,date:'2026-10-16',file:'issue-2.html',title:'从飞天跑车到算力造爽剧'},
+    {no:3,date:'2026-10-20',file:'issue-3.html',title:'从太空兔到5万亿美元'},
+    {no:4,date:'2026-10-22',file:'issue-4.html',title:'从AI越界到意念操控'},
+    {no:5,date:'2026-10-28',file:'issue-5.html',title:'从2万亿IPO到4800亿蒸发'},
+    {no:6,date:'2026-10-30',file:'issue-6.html',title:'从5000亿蒸发到算力大网'},
+    {no:7,date:'2026-11-09',file:'issue-7.html',title:'从3774亿现金到23小时交易'},
+    {no:8,date:'2026-11-12',file:'index.html',title:'从1.4万亿美元到30B大模型入端'}
+  ];
+  function fillIssues(list){
+    jump.innerHTML='';
+    list.forEach(function(it){
+      var o=document.createElement('option');
+      o.value=it.file;
+      o.textContent='第 '+it.no+' 期 · '+it.date+(it.title?' · '+it.title:'');
+      if(it.file===curFile){o.selected=true;o.textContent+='（当前）'}
+      jump.appendChild(o);
+    });
+  }
+  fillIssues(DEFAULT_ISSUES);
+  fetch('issues.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+    if(d&&d.issues&&d.issues.length){fillIssues(d.issues)}
+  }).catch(function(){});
+  jump.addEventListener('change',function(){
+    if(this.value){window.location.href=this.value}
+  });
+
+  /* 回到顶部 */
+  var top=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>500)top.classList.add('show');else top.classList.remove('show');
+  },{passive:true});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>

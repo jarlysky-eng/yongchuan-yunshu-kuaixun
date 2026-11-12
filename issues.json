@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-12",
   "issues": [
     {
       "no": 1,
@@ -40,8 +40,14 @@
     {
       "no": 7,
       "date": "2026-11-09",
-      "file": "index.html",
+      "file": "issue-7.html",
       "title": "从3774亿现金到23小时交易"
+    },
+    {
+      "no": 8,
+      "date": "2026-11-12",
+      "file": "index.html",
+      "title": "从1.4万亿美元到30B大模型入端"
     }
   ]
 }
